@@ -1,21 +1,32 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
+from faker import Faker
 
+fake = Faker()
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+    users =[]
 
-    db.session.add(demo)
-    db.session.add(marnie)
-    db.session.add(bobbie)
+    usernames = ["DemoUser", "MochiMochi", "JuniBug", "ZoeBear", 'PacoTaco', "EmmaLand", "LucySpace", "JohnsBook" ]
+    emails = ["demouser@appacademy.io", "mochimochi@appacademy.io", "junibug@appacademy.io", "zoebear@appacademy.io", "pacotaco@appacademy.io", "emmaland@appacademy.io", "lucyspace@appacademy.io", "johnsbook@appacademy.io" ]
+    for i in range(8):
+        random_date_time = fake.date_time_between(start_date='-1y', end_date='now')
+
+        user = User(
+        username = usernames[i],
+        password = "password",
+        first_name = fake.first_name(),
+        last_name = fake.last_name(),
+        email = emails[i],
+        created_at = random_date_time,
+        updated_at = random_date_time
+        )
+        users.append(user)
+
+    db.session.add_all(users)
     db.session.commit()
-
+    return users
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
 # have a built in function to do this. With postgres in production TRUNCATE
@@ -28,5 +39,5 @@ def undo_users():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM users"))
-        
+
     db.session.commit()
