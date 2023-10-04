@@ -1,0 +1,19 @@
+{
+  "Tasks": {
+    "task.id": {
+      "category": "personal",
+      "createdAt": "Wed, 04 Oct 2023 12:53:11 GMT",
+      "dealine": "10:00 AM",
+      "id": 1,
+      "name": "Pick up bananas at the market",
+      "priority": false,
+      "status": "not started",
+      "updatedAt": "Wed, 04 Oct 2023 12:53:11 GMT",
+      "userId": 1,
+      "Note": {
+        "noteId": "1",
+        "note": "...."
+      }
+    }
+  }
+}

@@ -17,3 +17,18 @@ class Task(db.Model):
   deadline = db.Column(db.Time, nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+
+  note = db.relationship("Note", back_populates='task')
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "userId": self.user_id,
+      "name": self.name,
+      "priority": self.priority,
+      "status": self.status,
+      "category": self.category,
+      "dealine": self.deadline.strftime('%I:%M %p'),
+      "createdAt": self.created_at,
+      "updatedAt": self.updated_at
+    }
