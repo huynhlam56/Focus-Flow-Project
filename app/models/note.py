@@ -12,3 +12,5 @@ class Note(db.Model):
   note = db.Column(db.String(255), nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
+
+  task = db.relationship("Task", back_populates="note")
