@@ -1,17 +1,16 @@
-"""initital migration
+"""initial migration
 
-Revision ID: 90112d0712b8
+Revision ID: 2ad65bd8e50b
 Revises:
-Create Date: 2023-10-03 22:41:27.518934
+Create Date: 2023-10-03 23:33:15.088024
 
 """
 from alembic import op
 import sqlalchemy as sa
-
 import os
 
 # revision identifiers, used by Alembic.
-revision = '90112d0712b8'
+revision = '2ad65bd8e50b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,7 +51,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE tasks SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
