@@ -45,7 +45,7 @@ def upgrade():
     sa.Column('priority', sa.Boolean(), nullable=False),
     sa.Column('status', sa.String(), nullable=False),
     sa.Column('category', sa.String(), nullable=True),
-    sa.Column('deadline', sa.DateTime(), nullable=False),
+    sa.Column('deadline', sa.Time(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
