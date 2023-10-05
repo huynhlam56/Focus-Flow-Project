@@ -39,7 +39,7 @@ def delete_note(noteId):
   """
   note = Note.query.get(noteId)
 
-  if not note:
+  if note is None or note.task_id is None:
     return {'error': 'Note not found'}, 404
 
   task = Task.query.get(note.task_id)
