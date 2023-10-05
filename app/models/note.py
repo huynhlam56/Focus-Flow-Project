@@ -14,3 +14,12 @@ class Note(db.Model):
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
   task = db.relationship("Task", back_populates="note")
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'taskId': self.task_id,
+      'note': self.note,
+      'createdAt': self.created_at,
+      'updatedAt': self.updated_at
+    }

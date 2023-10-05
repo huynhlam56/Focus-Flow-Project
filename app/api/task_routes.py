@@ -105,7 +105,57 @@ def delete_task(taskId):
   if task.user_id != current_user.id:
     return {'error': 'Unauthorized'}, 401
 
+  ##delete the associated notes first
+  notes = Note.query.filter_by(task_id=taskId).all()
+  for note in notes:
+    db.session.delete(note)
+
   db.session.delete(task)
   db.session.commit()
 
   return {'message': "Successfully deleted task"}
+
+@task_routes.route("/<int:taskId>/notes", methods=["GET"])
+@login_required
+def get_note(taskId):
+  """
+  Get note for a task
+  """
+  task = Task.query.get(taskId)
+  if not task:
+    return {'error': 'Task is not found'}, 404
+
+  notes = Note.query.filter_by(task_id=taskId).all()
+
+  note_dict = {}
+
+  for note in notes:
+    data = note.to_dict()
+    note_dict[str(note.id)] = data
+  return {"Note": note_dict}
+
+@task_routes.route("/<int:taskId>/notes", methods=['POST'])
+@login_required
+def create_note(taskId):
+  """
+  Create note for a task
+  """
+  task = Task.query.get(taskId)
+  if not task:
+    return {'error': 'Task is not found'}, 404
+
+  if task.user_id != current_user.id:
+    return {'error': "Cannot write notes on tasks that do not belong to you"}, 403
+
+  form=NoteForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+
+  if form.validate_on_submit():
+    new_note = Note(
+      task_id = taskId,
+      note = form.data['note']
+    )
+    db.session.add(new_note)
+    db.session.commit()
+    return new_note.to_dict()
+  return {'errors': validation_errors_to_error_messages(form.errors)}, 400
