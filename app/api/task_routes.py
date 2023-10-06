@@ -22,7 +22,6 @@ def get_tasks():
   task_dict = {}
   total_tasks = len(users_tasks)
   for task in users_tasks:
-
     ## grab all data from to_dict func and save it to data variable
     data = task.to_dict()
     task_dict[task.id] = data
