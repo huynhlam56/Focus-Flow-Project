@@ -19,8 +19,10 @@ export const authenticate = () => async (dispatch) => {
 			"Content-Type": "application/json",
 		},
 	});
+	console.log(response)
 	if (response.ok) {
 		const data = await response.json();
+		console.log(data)
 		if (data.errors) {
 			return;
 		}

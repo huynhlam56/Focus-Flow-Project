@@ -1,35 +1,85 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './TaskIndex.css'
-import { fetchAllTasksThunk } from "../../../store/task";
+import { fetchAllTasksThunk, updateTaskThunk } from "../../../store/task";
+import OpenModalButton from "../../OpenModalButton";
+import SingleTask from "../SingleTask";
+import { useModal } from "../../../context/Modal";
+import CreateTask from "../CreateTask";
 
 function AllTasks() {
-  console.log('INSIDE COMPONENT')
+
   const dispatch = useDispatch()
-  const task = useSelector(state => state.tasks)
-  console.log('TASK IN COMPONENT', task)
+  const tasks = useSelector(state => state.tasks.Tasks)
+  console.log(tasks)
   useEffect(() => {
-    dispatch (fetchAllTasksThunk())
+    dispatch(fetchAllTasksThunk())
   },[dispatch])
 
-  if (!task || Object.keys(task) === 0) return null
-  const allTasks = Object.values(task)
+
+  const handleEditSubmit = (e, task) => {
+    e.preventDefault()
+    console.log(task)
+    dispatch(updateTaskThunk(task, task.id))
+  }
+
+  const handleCreateTask = (e) => {
+    e.preventDefault()
+  }
+
+  if (!tasks || Object.keys(tasks).length === 0) return null
+  const allTasks = Object.values(tasks)
+
+  const personalTasks = allTasks.filter((task) => task.category === 'Personal')
+  const schoolTasks = allTasks.filter((task) => task.category === 'School')
+  const workTasks = allTasks.filter((task) => task.category === 'Work')
 
   return (
     <div>
       <div>
         <h1>Your Goals For Today</h1>
       </div>
-      <div key={task.id}>
-        {allTasks.map((task) => (
-          <div>
-            <p>{task.name}</p>
-            <p>{task.priority}</p>
-            <p>{task.status}</p>
-            <p>{task.category}</p>
-            <p>{task.deadline}</p>
+      <div>
+        <p>Personal</p>
+        {personalTasks && personalTasks.map((task) => (
+          <div key={task.id}>
+            <OpenModalButton
+              buttonText = {"Task: " + task.name}
+              modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit}/>}
+            />
+            {task.priority === true ? <p>Priority: yes </p> : null}
           </div>
         ))}
+        <div>
+          <p>Work</p>
+          {workTasks && workTasks.map((task) => (
+            <div key={task.id}>
+              <OpenModalButton
+                buttonText = {"Task: " + task.name}
+                modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit} />}
+              />
+              {task.priority === true ? <p>Priority: yes </p> : null}
+            </div>
+          ))}
+        </div>
+        <div>
+          <p>School</p>
+          {schoolTasks && schoolTasks.map((task) => (
+            <div key={task.id}>
+              <OpenModalButton
+                buttonText = {"Task: " + task.name}
+                modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit}/>}
+              />
+              {task.priority === true ? <p>Priority: yes </p> : null}
+            </div>
+          ))}
+        </div>
+        <div>
+          <OpenModalButton
+            buttonText="Add Task"
+            modalComponent={<CreateTask />}
+          />
+        </div>
       </div>
     </div>
   )

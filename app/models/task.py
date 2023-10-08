@@ -28,7 +28,7 @@ class Task(db.Model):
       "priority": self.priority,
       "status": self.status,
       "category": self.category,
-      "dealine": self.deadline.strftime('%I:%M %p'),
+      "deadline": self.deadline.strftime('%I:%M %p'),
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }

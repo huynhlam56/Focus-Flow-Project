@@ -25,9 +25,12 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/" >
+          <Route path="/tasks" >
             <AllTasks />
           </Route>
+          {/* <Route path="/tasks/:taskId">
+            <SingleTask />
+          </Route> */}
         </Switch>
       )}
     </>

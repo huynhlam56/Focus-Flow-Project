@@ -5,9 +5,9 @@ from wtforms.validators import DataRequired, ValidationError
 class TaskForm(FlaskForm):
   name = StringField('name', validators=[DataRequired()])
   priority = BooleanField(default=False, validators=[DataRequired()])
-  status = SelectField('status', choices=[('not started', 'Not started'), ('in progress', 'In progress'), ('incompleted', 'Incompleted')], default='not started')
+  status = SelectField('status', choices=[('Not Started', 'Not started'), ('In Progress', 'In progress'), ('Incompleted', 'Incompleted')], default='Not Started')
   deadline = TimeField('deadline', validators=[DataRequired()])
-  category = SelectField('category', choices=[('personal', 'Personal'), ('work', 'Work'), ('school', 'School')])
+  category = SelectField('category', choices=[('Personal', 'Personal'), ('Work', 'Work'), ('School', 'School')])
 
   def validate_name(form, field):
     if not field.data:
