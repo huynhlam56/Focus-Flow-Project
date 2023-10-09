@@ -11,7 +11,7 @@ function AllTasks() {
 
   const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks.Tasks)
-  
+
   useEffect(() => {
     dispatch(fetchAllTasksThunk())
   },[dispatch])
@@ -40,18 +40,18 @@ function AllTasks() {
         <h1>Your Goals For Today</h1>
       </div>
       <div>
-        <p>Personal</p>
+        <h3>Personal</h3>
         {personalTasks && personalTasks.map((task) => (
           <div key={task.id}>
             <OpenModalButton
               buttonText = {"Task: " + task.name}
               modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit}/>}
             />
-            {task.priority === true ? <p>Priority: yes </p> : null}
+            {/* {task.priority === true ? <p>Priority: yes </p> : null} */}
           </div>
         ))}
         <div>
-          <p>Work</p>
+          <h3>Work</h3>
           {workTasks && workTasks.map((task) => (
             <div key={task.id}>
               <OpenModalButton
@@ -63,14 +63,14 @@ function AllTasks() {
           ))}
         </div>
         <div>
-          <p>School</p>
+          <h3>School</h3>
           {schoolTasks && schoolTasks.map((task) => (
             <div key={task.id}>
               <OpenModalButton
                 buttonText = {"Task: " + task.name}
                 modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit}/>}
               />
-              {task.priority === true ? <p>Priority: yes </p> : null}
+              {/* {task.priority === true ? <p>Priority: yes </p> : null} */}
             </div>
           ))}
         </div>
