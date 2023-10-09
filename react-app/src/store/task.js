@@ -4,8 +4,13 @@ export const CREATE_TASK = 'tasks/CREATE_TASK'
 export const UPDATE_TASK = 'task/UPDATE_TASK'
 export const DELETE_TASK = 'task/DELETE_TASK'
 
+export const LOAD_NOTES = 'notes/LOAD_NOTES'
+export const UPDATE_NOTE = 'notes/UPDATE_NOTE'
+export const CREATE_NOTE = 'notes/CREATE_NOTE'
+export const DELETE_NOTE = 'notes/DELETE_NOTE'
 
-/* ACTION CREATORS */
+
+/* TASK ACTION CREATORS */
 
 export const loadTasks = (tasks) => ({
   type: LOAD_TASKS,
@@ -30,6 +35,28 @@ export const updateTask = (task, taskId) => ({
 export const deleteTask = (taskId) => ({
   type: DELETE_TASK,
   taskId
+})
+
+/* NOTE ACTION CREATORS */
+
+export const loadNotes = (note) => ({
+  type: LOAD_NOTES,
+  note
+})
+
+export const createNote = (note) => ({
+  type: CREATE_NOTE,
+  note
+})
+
+export const updateNote = (note, taskId) => ({
+  type: UPDATE_NOTE,
+  payload: {note, taskId}
+})
+
+export const deleteNote = (noteId) => ({
+  type: DELETE_NOTE,
+  noteId
 })
 
 /* Thunks */
@@ -112,6 +139,50 @@ export const deleteTaskThunk = (taskId) => async dispatch => {
   }
 }
 
+// GET NOTES
+
+export const fetchNotesThunk = (taskId) => async dispatch => {
+  const response = await fetch (`/api/tasks/${taskId}/notes`)
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(loadNotes(data))
+    return data
+  }else {
+    const errors = await response.json()
+    return errors
+  }
+}
+
+export const createNoteThunk = (note, taskId) => async dispatch => {
+  const response = await fetch (`/api/tasks/${taskId}/notes`, {
+    method: "POST",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(note)
+  })
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(createNote(data))
+    return data
+  }else {
+    const errors = await response.json()
+    return errors
+  }
+}
+
+export const deleteNoteThunk = noteId => async dispatch => {
+  const response = await fetch(`/api/notes/${noteId}`, {
+    method: "DELETE"
+  })
+  if (response.ok){
+    const data = await response.json()
+    dispatch(deleteNote(data))
+    return data
+  }else {
+    const errors = await response.json()
+    return errors
+  }
+}
+
 const initialState = {}
 const taskReducer = (state = initialState, action) => {
   let newState;
@@ -119,15 +190,23 @@ const taskReducer = (state = initialState, action) => {
     case LOAD_TASKS:
       newState = {...state, ...action.tasks}
       return newState
-    case LOAD_SINGLETASK:
-      newState = {...state, SingleTask: {...state.SingleTask, ...action.task}}
-      return newState
+    // case LOAD_SINGLETASK:
+    //   newState = {...state, SingleTask: {...state.SingleTask, ...action.task}}
+    //   return newState
     case UPDATE_TASK:
       const updatedTask = action.payload.task
       newState = {...state, SingleTask: {...state.SingleTask, [updateTask.id]: {...updatedTask}}}
     case DELETE_TASK:
       newState = {...state}
       delete newState[action.taskId]
+      return newState
+    case LOAD_NOTES:
+      console.log(state, 'STATEEE')
+      newState = {...state, Tasks: {...state.Tasks, [action.note.taskId]: {...state.Tasks[action.note.taskId], Note: action.note}}}
+      return newState
+    case DELETE_NOTE:
+      newState = {...state}
+      delete newState[action.noteId]
       return newState
     default:
       return state

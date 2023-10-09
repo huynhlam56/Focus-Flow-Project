@@ -11,7 +11,7 @@ function AllTasks() {
 
   const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks.Tasks)
-  console.log(tasks)
+  
   useEffect(() => {
     dispatch(fetchAllTasksThunk())
   },[dispatch])
@@ -23,9 +23,9 @@ function AllTasks() {
     dispatch(updateTaskThunk(task, task.id))
   }
 
-  const handleCreateTask = (e) => {
-    e.preventDefault()
-  }
+  // const handleCreateTask = (e) => {
+  //   e.preventDefault()
+  // }
 
   if (!tasks || Object.keys(tasks).length === 0) return null
   const allTasks = Object.values(tasks)

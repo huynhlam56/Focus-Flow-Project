@@ -124,14 +124,10 @@ def get_note(taskId):
   if not task:
     return {'error': 'Task is not found'}, 404
 
-  notes = Note.query.filter_by(task_id=taskId).all()
+  note = Note.query.filter_by(task_id=taskId).first()
 
-  note_dict = {}
-
-  for note in notes:
-    data = note.to_dict()
-    note_dict[str(note.id)] = data
-  return {"Note": note_dict}
+  # note_dict = {}
+  return note.to_dict()
 
 @task_routes.route("/<int:taskId>/notes", methods=['POST'])
 @login_required

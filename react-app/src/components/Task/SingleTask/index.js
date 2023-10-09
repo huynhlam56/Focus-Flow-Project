@@ -5,6 +5,7 @@ import { fetchSingleTaskThunk } from "../../../store/task";
 import { useDispatch } from "react-redux";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteTaskModal from "../DeleteTask";
+import ShowNote from "../../Note/ShowNotes";
 
 
 
@@ -12,7 +13,6 @@ function SingleTask({task, onEditSubmit}) {
   // useEffect(() => {
   //   dispatch(fetchSingleTaskThunk(taskId))
   // }, [dispatch, taskId])
-  console.log(task, "IN SINGLETASK")
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState(task.name)
@@ -24,8 +24,7 @@ function SingleTask({task, onEditSubmit}) {
   const [errors, setErrors] = useState({})
   const { closeModal } = useModal
 
-  console.log(priority)
-  console.log(deadline)
+
   const handleEditButton = () => {
     setIsEditing(true)
   }
@@ -129,6 +128,9 @@ function SingleTask({task, onEditSubmit}) {
           />
         </div>
       )}
+    <div>
+      <ShowNote task={task} />
+    </div>
     </div>
   )
 }
