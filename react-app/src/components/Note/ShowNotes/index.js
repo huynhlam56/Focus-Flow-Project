@@ -4,13 +4,12 @@ import { fetchNotesThunk } from "../../../store/task";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteNoteModal from "../DeleteNote";
 import EditNoteModal from "../EditNote";
+import NoteForm from "../NoteForm";
 
 
 const ShowNote = ({task}) => {
   const dispatch = useDispatch()
-  console.log(task)
   const note = useSelector((state) => state.tasks?.Tasks[task.id].Note || {})
-  console.log(note, "note")
 
   useEffect(() => {
     dispatch(fetchNotesThunk(task.id))
@@ -27,10 +26,14 @@ const ShowNote = ({task}) => {
         buttonText='Delete'
         modalComponent={<DeleteNoteModal />}
       />
-      {/* <OpenModalButton
+      <OpenModalButton
         buttonText='Edit'
-        modalComponent={<NoteForm note={note} formType="edit"/>}
-      /> */}
+        modalComponent={<NoteForm task={task} note={note} formType="edit"/>}
+      />
+      <OpenModalButton
+        buttonText='Add Note'
+        modalComponent={<NoteForm note={note} formType='create' />}
+      />
       </div>
     </div>
   )

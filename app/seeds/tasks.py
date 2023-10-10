@@ -11,7 +11,7 @@ def seed_tasks():
       user_id=1,
       priority=False,
       status='Not Started',
-      deadline=time(10, 0),
+      deadline='10:00 AM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -21,7 +21,7 @@ def seed_tasks():
       user_id=1,
       priority=True,
       status='Not Started',
-      deadline=time(14, 30),
+      deadline='06:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -31,7 +31,7 @@ def seed_tasks():
       user_id=1,
       priority=True,
       status='In Progress',
-      deadline=time(20, 0),
+      deadline='03:00 PM',
       category='School',
       created_at=current_date,
       updated_at=current_date
@@ -41,7 +41,7 @@ def seed_tasks():
       user_id=2,
       priority=True,
       status='In Progress',
-      deadline=time(20, 0),
+      deadline='08:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -51,7 +51,7 @@ def seed_tasks():
       user_id=2,
       priority=True,
       status='In Progress',
-      deadline=time(16, 20),
+      deadline='10:00 AM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -61,7 +61,7 @@ def seed_tasks():
       user_id=2,
       priority=False,
       status='Not Started',
-      deadline=time(9, 0),
+      deadline='09:00 AM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -71,7 +71,7 @@ def seed_tasks():
       user_id=3,
       priority=True,
       status='In Progress',
-      deadline=time(11, 30),
+      deadline='02:00 PM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -81,7 +81,7 @@ def seed_tasks():
       user_id=3,
       priority=True,
       status='Not Started',
-      deadline=time(16, 0),
+      deadline='02:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -91,7 +91,7 @@ def seed_tasks():
       user_id=3,
       priority=False,
       status='Not Started',
-      deadline=time(14, 0),
+      deadline='01:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -101,7 +101,7 @@ def seed_tasks():
       user_id=4,
       priority=True,
       status='In Progress',
-      deadline=time(14, 20),
+      deadline='04:00 PM',
       category='School',
       created_at=current_date,
       updated_at=current_date
@@ -111,7 +111,7 @@ def seed_tasks():
       user_id=4,
       priority=True,
       status='Not Started',
-      deadline=time(17, 0),
+      deadline='01:00 PM',
       category='School',
       created_at=current_date,
       updated_at=current_date
@@ -121,7 +121,7 @@ def seed_tasks():
       user_id=4,
       priority=True,
       status='Not Started',
-      deadline=time(19, 0),
+      deadline='08:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -131,7 +131,7 @@ def seed_tasks():
       user_id=5,
       priority=True,
       status='Not Started',
-      deadline=time(10, 0),
+      deadline='06:00 PM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -141,7 +141,7 @@ def seed_tasks():
       user_id=5,
       priority=True,
       status='In Progress',
-      deadline=time(15, 0),
+      deadline='03:00 PM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -151,7 +151,7 @@ def seed_tasks():
       user_id=5,
       priority=True,
       status='In Progress',
-      deadline=time(12, 0),
+      deadline='07:00 AM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -161,7 +161,7 @@ def seed_tasks():
       user_id=6,
       priority=False,
       status='Not Started',
-      deadline=time(16, 0),
+      deadline='12:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -171,7 +171,7 @@ def seed_tasks():
       user_id=6,
       priority=True,
       status='In Progress',
-      deadline=time(16, 0),
+      deadline='05:00 PM',
       category='School',
       created_at=current_date,
       updated_at=current_date
@@ -181,7 +181,7 @@ def seed_tasks():
       user_id=6,
       priority=True,
       status='Not Started',
-      deadline=time(15, 0),
+      deadline='09:00 AM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -191,7 +191,7 @@ def seed_tasks():
       user_id=7,
       priority=True,
       status='In Progress',
-      deadline=time(14, 40),
+      deadline='02:00 PM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -201,7 +201,7 @@ def seed_tasks():
       user_id=7,
       priority=False,
       status='Not Started',
-      deadline=time(17, 20),
+      deadline='06:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -211,7 +211,7 @@ def seed_tasks():
       user_id=7,
       priority=True,
       status='Not Started',
-      deadline=time(13, 40),
+      deadline='04:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -221,7 +221,7 @@ def seed_tasks():
       user_id=8,
       priority=True,
       status='In Progress',
-      deadline=time(19, 0),
+      deadline='11:00 AM',
       category='Work',
       created_at=current_date,
       updated_at=current_date
@@ -231,7 +231,7 @@ def seed_tasks():
       user_id=8,
       priority=True,
       status='Not Started',
-      deadline=time(17, 10),
+      deadline='10:00 AM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date
@@ -241,7 +241,7 @@ def seed_tasks():
       user_id=8,
       priority=True,
       status='Not Started',
-      deadline=time(18, 10),
+      deadline='07:00 PM',
       category='Personal',
       created_at=current_date,
       updated_at=current_date

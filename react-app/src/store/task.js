@@ -96,10 +96,11 @@ export const updateTaskThunk = (editedTask, taskId) => async dispatch => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedTask)
   })
-  console.log(taskId)
+
   if(response.ok) {
     const data = await response.json()
     dispatch(updateTask(data))
+    dispatch(fetchAllTasksThunk())
     return data
   } else {
     const errors = await response.json()
@@ -117,7 +118,7 @@ export const createTaskThunk =(task) => async dispatch => {
   })
   if (response.ok) {
     const newTask = await response.json()
-    dispatch(fetchSingleTaskThunk(newTask))
+    dispatch(createTask(newTask))
     return newTask
   }else {
     const errors = await response.json()
@@ -169,6 +170,22 @@ export const createNoteThunk = (note, taskId) => async dispatch => {
   }
 }
 
+export const editNoteThunk = (note, noteId) => async dispatch => {
+  const response = await fetch(`/api/notes/${noteId}`, {
+    method: "PUT",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(note)
+  })
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(updateNote(data))
+    return data
+  }else {
+    const errors = await response.json()
+    return errors
+  }
+}
+
 export const deleteNoteThunk = noteId => async dispatch => {
   const response = await fetch(`/api/notes/${noteId}`, {
     method: "DELETE"
@@ -195,14 +212,18 @@ const taskReducer = (state = initialState, action) => {
     //   return newState
     case UPDATE_TASK:
       const updatedTask = action.payload.task
-      newState = {...state, SingleTask: {...state.SingleTask, [updateTask.id]: {...updatedTask}}}
+      newState = {...state, Tasks: { ...state.Tasks, [updatedTask.id]: {...updatedTask}}}
+      return newState
     case DELETE_TASK:
       newState = {...state}
       delete newState[action.taskId]
       return newState
     case LOAD_NOTES:
-      console.log(state, 'STATEEE')
       newState = {...state, Tasks: {...state.Tasks, [action.note.taskId]: {...state.Tasks[action.note.taskId], Note: action.note}}}
+      return newState
+    case UPDATE_NOTE:
+      const updatedNote = action.payload.note
+      newState = {...state, Tasks: {...state.Tasks, [action.note.taskId]: {...state.Tasks[action.note.taskId], Note: updatedNote}}}
       return newState
     case DELETE_NOTE:
       newState = {...state}

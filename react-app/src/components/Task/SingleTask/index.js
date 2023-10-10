@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import './SingleTask.css'
 import { useModal } from "../../../context/Modal";
 import { fetchSingleTaskThunk } from "../../../store/task";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteTaskModal from "../DeleteTask";
 import ShowNote from "../../Note/ShowNotes";
@@ -13,16 +13,18 @@ function SingleTask({task, onEditSubmit}) {
   // useEffect(() => {
   //   dispatch(fetchSingleTaskThunk(taskId))
   // }, [dispatch, taskId])
+  // const task = useSelector((state) => state.tasks.SingleTask)
   const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState(task.name)
   const [priority, setPriority] = useState(task.priority)
   const [status, setStatus] = useState(task.status)
   const [deadline, setDeadline] = useState(task.deadline)
-  const [timePeriod, setTimePeriod] = useState(task.timePeriod)
+  const [timePeriod, setTimePeriod] = useState(deadline.split(' ')[1])
   const [category, setCategory] = useState(task.category)
   const [errors, setErrors] = useState({})
-  const { closeModal } = useModal
+
+  const { closeModal } = useModal()
 
 
   const handleEditButton = () => {
@@ -32,27 +34,39 @@ function SingleTask({task, onEditSubmit}) {
   const handleCancelEditButton = () => {
     setIsEditing(false)
     setName(task.name)
+    setStatus(task.status)
     setPriority(task.priority)
     setDeadline(task.deadline)
+    setTimePeriod()
     setCategory(task.category)
   }
-
-  const handleSubmitButton = e => {
+  console.log(deadline, 'deadline1')
+  console.log(timePeriod, 'timePeriod1')
+  const handleSubmitButton = async(e) => {
     e.preventDefault()
-    setErrors({})
+
     const editedTasks = {
       id: task.id,
       name,
       priority,
       status,
-      deadline,
+      deadline: deadline + ' ' + timePeriod,
       category
     }
-    onEditSubmit(e, editedTasks)
+    await onEditSubmit(e, editedTasks)
     setIsEditing(false)
+    setErrors({})
+    setName(editedTasks.name)
+    setPriority(editedTasks.priority)
+    setStatus(editedTasks.status)
+    setDeadline(editedTasks.deadline)
+    setTimePeriod(timePeriod)
+    setCategory(editedTasks.category)
+    // closeModal()
   }
 
-
+  console.log(deadline, 'deadline')
+  console.log(timePeriod, 'timePeriod')
   if(!task || Object.keys(task) === 0) return null
 
   return (
@@ -116,11 +130,11 @@ function SingleTask({task, onEditSubmit}) {
         </form>
       ) : (
         <div>
-          <p>Category: {task.category}</p>
-          <p>Task: {task.name}</p>
-          <p>Priority: {task.priority}</p>
-          <p>Status: {task.status}</p>
-          <p>Deadline: {task.deadline}</p>
+          <p>Category: {category}</p>
+          <p>Task: {name}</p>
+          <p>Priority: {priority}</p>
+          <p>Status: {status}</p>
+          <p>Deadline: {deadline}</p>
           <button onClick={handleEditButton}>Edit Task</button>
           <OpenModalButton
             buttonText = "Delete"

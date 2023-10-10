@@ -9,9 +9,9 @@ function CreateTask({task}) {
   const [name, setName] = useState('')
   const [priority, setPriority] = useState(false)
   const [status, setStatus] = useState('Not Started')
-  const [deadline, setDeadline] = useState('')
-  const [category, setCategory] = useState('')
-  const [timePeriod, setTimePeriod] = useState()
+  const [deadline, setDeadline] = useState('12:00')
+  const [category, setCategory] = useState('Personal')
+  const [timePeriod, setTimePeriod] = useState('AM')
   const [errors, setErrors] = useState({})
   const { closeModal } = useModal()
 
@@ -22,10 +22,10 @@ function CreateTask({task}) {
       name,
       priority,
       status,
-      deadline,
+      deadline: deadline + '' + timePeriod,
       category
     }
-    console.log('TASK', task)
+    
     try{
       const newTask = await dispatch(createTaskThunk(task))
       newTask.id = task.id
@@ -61,8 +61,8 @@ function CreateTask({task}) {
         <label>
           Priority:
           <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-            <option value='true'>Yes</option>
-            <option value='false'>No</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
           </select>
         </label>
         <label>
@@ -99,9 +99,6 @@ function CreateTask({task}) {
     </div>
   )
 }
-
-
-
 
 
 export default CreateTask;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './TaskIndex.css'
-import { fetchAllTasksThunk, updateTaskThunk } from "../../../store/task";
+import { fetchAllTasksThunk, fetchSingleTaskThunk, updateTaskThunk } from "../../../store/task";
 import OpenModalButton from "../../OpenModalButton";
 import SingleTask from "../SingleTask";
 import { useModal } from "../../../context/Modal";
@@ -14,18 +14,13 @@ function AllTasks() {
 
   useEffect(() => {
     dispatch(fetchAllTasksThunk())
+
   },[dispatch])
 
-
-  const handleEditSubmit = (e, task) => {
+  const handleEditSubmit = async(e, task) => {
     e.preventDefault()
-    console.log(task)
-    dispatch(updateTaskThunk(task, task.id))
+   dispatch(updateTaskThunk(task, task.id))
   }
-
-  // const handleCreateTask = (e) => {
-  //   e.preventDefault()
-  // }
 
   if (!tasks || Object.keys(tasks).length === 0) return null
   const allTasks = Object.values(tasks)
@@ -34,6 +29,10 @@ function AllTasks() {
   const schoolTasks = allTasks.filter((task) => task.category === 'School')
   const workTasks = allTasks.filter((task) => task.category === 'Work')
 
+
+  console.log(personalTasks, "PERSONAL")
+  console.log(schoolTasks, "SCHOOl")
+  console.log(workTasks, "WORK")
   return (
     <div>
       <div>

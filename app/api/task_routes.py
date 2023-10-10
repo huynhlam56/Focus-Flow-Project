@@ -126,6 +126,9 @@ def get_note(taskId):
 
   note = Note.query.filter_by(task_id=taskId).first()
 
+  if not note:
+    return {'error': 'Note is not found'}, 404
+
   # note_dict = {}
   return note.to_dict()
 
