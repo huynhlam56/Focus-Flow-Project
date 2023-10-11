@@ -1,0 +1,42 @@
+.login-input-error{
+  color: red
+}
+
+.login-modal-div{
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  width: 250px;
+  border: 2px solid rgb(246, 214, 159);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.login-modal-form label{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-modal-form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.login-form-submit-button, .demo-submit-button {
+  height: 32px;
+  margin-top: 7px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 31px;
+  font-weight: bold;
+}
+
+.login-form-submit-button:hover,
+.demo-submit-button:hover{
+  background-color: rgb(246, 214, 159);
+  cursor: pointer;
+}
