@@ -26,7 +26,15 @@ function AllTasks() {
    dispatch(updateTaskThunk(task, task.id))
   }
 
-  if (!tasks || Object.keys(tasks).length === 0) return null
+  if (!tasks || Object.keys(tasks).length === 0) return (
+    <div>
+      <h4>No Tasks Yet</h4>
+      <OpenModalButton
+        buttonText="Add Task"
+        modalComponent={<CreateTask />}
+      />
+  </div>
+  )
   const allTasks = Object.values(tasks)
 
   const personalTasks = allTasks.filter((task) => task.category === 'Personal')
