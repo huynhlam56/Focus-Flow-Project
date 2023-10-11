@@ -12,6 +12,7 @@ def edit_note(noteId):
   """
   Update a note on a task
   """
+  print(noteId, "NOTE ID HERE")
   note = Note.query.get(noteId)
   task = Task.query.get(note.task_id)
 
@@ -39,7 +40,7 @@ def delete_note(noteId):
   """
   note = Note.query.get(noteId)
 
-  if not note:
+  if note is None or note.task_id is None:
     return {'error': 'Note not found'}, 404
 
   task = Task.query.get(note.task_id)

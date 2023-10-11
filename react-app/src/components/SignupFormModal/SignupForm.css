@@ -1,0 +1,40 @@
+.signup-modal-div {
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  width: 300px;
+  border: 2px solid rgb(246, 214, 159);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.sign-up-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.signup-form-submit-btn:hover{
+  background-color: rgb(246, 214, 159);
+  cursor: pointer;
+}
+
+.signup-form-submit-btn {
+  height: 32px;
+  margin-top: 7px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 31px;
+  font-weight: bold;
+}
+
+.error-msg{
+  color:red;
+}

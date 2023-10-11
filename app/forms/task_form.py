@@ -4,16 +4,16 @@ from wtforms.validators import DataRequired, ValidationError
 
 class TaskForm(FlaskForm):
   name = StringField('name', validators=[DataRequired()])
-  priority = BooleanField(default=False, validators=[DataRequired()])
-  status = SelectField('status', choices=[('not started', 'Not started'), ('in progress', 'In progress'), ('incompleted', 'Incompleted')], default='not started')
-  deadline = TimeField('deadline', validators=[DataRequired()])
-  category = SelectField('category', choices=[('personal', 'Personal'), ('work', 'Work'), ('school', 'School')])
+  priority = BooleanField('priority')
+  status = SelectField('status', choices=[('Not Started', 'Not started'), ('In Progress', 'In progress'), ('Incomplete', 'Incomplete')], default='Not Started')
+  deadline = StringField('deadline', validators=[DataRequired()])
+  category = SelectField('category', choices=[('Personal', 'Personal'), ('Work', 'Work'), ('School', 'School')])
 
   def validate_name(form, field):
     if not field.data:
       raise ValidationError('Task name is required')
   def validate_priority(form, field):
-    if not field.data:
+    if field.data not in (True, False):
       raise ValidationError('Please select "yes" or "no"')
   def validate_deadline(form, field):
     if not field.data:

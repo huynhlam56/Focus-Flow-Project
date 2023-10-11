@@ -1,0 +1,35 @@
+const initialState = {}
+const taskReducer = (state = initialState, action) => {
+  let newState;
+  switch(action.type) {
+    case LOAD_TASKS:
+      newState = {...state, Tasks: action.tasks}
+      return newState
+    // case LOAD_SINGLETASK:
+    //   newState = {...state, SingleTask: {...state.SingleTask, ...action.task}}
+    //   return newState
+    case UPDATE_TASK:
+      const updatedTask = action.payload.task
+      newState = {...state, Tasks: {...state.Tasks, [updatedTask.id]: updatedTask}, SingleTask: {...state.SingleTask, [updatedTask.id]: {...updatedTask}}}
+      return newState
+    case DELETE_TASK:
+      newState = {...state}
+      delete newState[action.taskId]
+      return newState
+    case LOAD_NOTES:
+      console.log(state, 'STATEEE')
+      newState = {...state, Tasks: {...state.Tasks, [action.note.taskId]: {...state.Tasks[action.note.taskId], Note: action.note}}}
+      return newState
+    case UPDATE_NOTE:
+      const updatedNote = action.payload.note
+      console.log(updatedNote, 'UPDATEDNOTE ')
+      newState = {...state, Tasks: {...state.Tasks, [action.note.taskId]: {...state.Tasks[action.note.taskId], Note: updatedNote}}}
+      return newState
+    case DELETE_NOTE:
+      newState = {...state}
+      delete newState[action.noteId]
+      return newState
+    default:
+      return state
+  }
+}

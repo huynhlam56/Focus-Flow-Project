@@ -14,7 +14,7 @@ class Task(db.Model):
   priority = db.Column(db.Boolean, nullable=False)
   status = db.Column(db.String, nullable=False)
   category = db.Column(db.String, nullable=True)
-  deadline = db.Column(db.Time, nullable=False)
+  deadline = db.Column(db.String, nullable=False)
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
@@ -28,7 +28,7 @@ class Task(db.Model):
       "priority": self.priority,
       "status": self.status,
       "category": self.category,
-      "dealine": self.deadline.strftime('%I:%M %p'),
+      "deadline": self.deadline,
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }

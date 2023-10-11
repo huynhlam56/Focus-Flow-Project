@@ -22,7 +22,6 @@ def get_tasks():
   task_dict = {}
   total_tasks = len(users_tasks)
   for task in users_tasks:
-
     ## grab all data from to_dict func and save it to data variable
     data = task.to_dict()
     task_dict[task.id] = data
@@ -125,14 +124,13 @@ def get_note(taskId):
   if not task:
     return {'error': 'Task is not found'}, 404
 
-  notes = Note.query.filter_by(task_id=taskId).all()
+  note = Note.query.filter_by(task_id=taskId).first()
 
-  note_dict = {}
+  if not note:
+    return {'error': 'Note is not found'}, 404
 
-  for note in notes:
-    data = note.to_dict()
-    note_dict[str(note.id)] = data
-  return {"Note": note_dict}
+  # note_dict = {}
+  return note.to_dict()
 
 @task_routes.route("/<int:taskId>/notes", methods=['POST'])
 @login_required

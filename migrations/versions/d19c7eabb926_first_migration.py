@@ -1,8 +1,8 @@
-"""initial migration
+"""first migration
 
-Revision ID: 7b87a603d594
+Revision ID: d19c7eabb926
 Revises:
-Create Date: 2023-10-04 12:51:24.957273
+Create Date: 2023-10-08 18:08:56.439154
 
 """
 from alembic import op
@@ -12,8 +12,10 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+if environment == 'production':
+    op.execute("CREATE SCHEMA IF NOT EXISTS focus_flow")
 # revision identifiers, used by Alembic.
-revision = '7b87a603d594'
+revision = 'd19c7eabb926'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -58,7 +60,8 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['task_id'], ['tasks.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('task_id')
     )
     if environment == "production":
         op.execute(f"ALTER TABLE notes SET SCHEMA {SCHEMA};")
