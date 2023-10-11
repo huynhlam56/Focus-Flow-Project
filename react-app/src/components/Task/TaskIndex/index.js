@@ -27,13 +27,14 @@ function AllTasks() {
   }
 
   if (!tasks || Object.keys(tasks).length === 0) return (
-    <div>
-      <h4>No Tasks Yet</h4>
-      <OpenModalButton
-        buttonText="Add Task"
-        modalComponent={<CreateTask />}
-      />
-  </div>
+  //   <div>
+  //     <h4>No Tasks Yet</h4>
+  //     <OpenModalButton
+  //       buttonText="Add Task"
+  //       modalComponent={<CreateTask />}
+  //     />
+  // </div>
+    null
   )
   const allTasks = Object.values(tasks)
 
@@ -78,6 +79,7 @@ function AllTasks() {
             </div>
           ))}
         </div>
+        :
         <div>
           <OpenModalButton
             buttonText="Add Task"
