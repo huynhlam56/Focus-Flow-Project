@@ -8,6 +8,8 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	// if (sessionUser) return <Redirect to="/" />;
 
+	if (!sessionUser) return <ProfileButton user={sessionUser} />
+
 	return (
 		<ul>
 			<li>

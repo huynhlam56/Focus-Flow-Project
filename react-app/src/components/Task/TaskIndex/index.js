@@ -17,10 +17,10 @@ function AllTasks() {
 
   },[dispatch])
 
-  // if(!user || Object.keys(user).length === 0) return (
-  //   <div>Please log in to view tasks</div>
-  // )
-  
+  if(!user || Object.keys(user).length === 0) return (
+    <h4>Please log in to view tasks</h4>
+  )
+
   const handleEditSubmit = async(e, task) => {
     e.preventDefault()
    dispatch(updateTaskThunk(task, task.id))
