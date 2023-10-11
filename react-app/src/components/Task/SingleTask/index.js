@@ -8,7 +8,7 @@ import DeleteTaskModal from "../DeleteTask";
 import ShowNote from "../../Note/ShowNotes";
 
 
-
+//task: "10:00 AM"
 function SingleTask({task, onEditSubmit}) {
   // useEffect(() => {
   //   dispatch(fetchSingleTaskThunk(taskId))
@@ -19,8 +19,8 @@ function SingleTask({task, onEditSubmit}) {
   const [name, setName] = useState(task.name)
   const [priority, setPriority] = useState(task.priority)
   const [status, setStatus] = useState(task.status)
-  const [deadline, setDeadline] = useState(task.deadline)
-  const [timePeriod, setTimePeriod] = useState(deadline.split(' ')[1])
+  const [deadline, setDeadline] = useState(task.deadline.split(' ')[0])
+  const [timePeriod, setTimePeriod] = useState(task.deadline.split(' ')[1])
   const [category, setCategory] = useState(task.category)
   const [errors, setErrors] = useState({})
 
@@ -31,21 +31,24 @@ function SingleTask({task, onEditSubmit}) {
     setIsEditing(true)
   }
 
-  const handleCancelEditButton = () => {
-    setIsEditing(false)
-    setName(task.name)
+  const handleCancelEditButton = (e) => {
+    e.preventDefault()
+
+    setName(name)
     setStatus(task.status)
     setPriority(task.priority)
-    setDeadline(task.deadline)
-    setTimePeriod()
+    setDeadline(task.deadline.split(' ')[0])
+    setTimePeriod(task.deadline.split(' ')[1])
     setCategory(task.category)
+    setIsEditing(false)
   }
-  console.log(deadline, 'deadline1')
-  console.log(timePeriod, 'timePeriod1')
+
   const handleSubmitButton = async(e) => {
     e.preventDefault()
 
-    const editedTasks = {
+    console.log(deadline + ' ' + timePeriod)
+
+    const editedTask = {
       id: task.id,
       name,
       priority,
@@ -53,15 +56,15 @@ function SingleTask({task, onEditSubmit}) {
       deadline: deadline + ' ' + timePeriod,
       category
     }
-    await onEditSubmit(e, editedTasks)
+    await onEditSubmit(e, editedTask)
     setIsEditing(false)
     setErrors({})
-    setName(editedTasks.name)
-    setPriority(editedTasks.priority)
-    setStatus(editedTasks.status)
-    setDeadline(editedTasks.deadline)
-    setTimePeriod(timePeriod)
-    setCategory(editedTasks.category)
+    setName(editedTask.name)
+    setPriority(editedTask.priority)
+    setStatus(editedTask.status)
+    setDeadline(editedTask.deadline.split(' ')[0])
+    setTimePeriod(editedTask.deadline.split(' ')[1])
+    setCategory(editedTask.category)
     // closeModal()
   }
 
@@ -125,8 +128,8 @@ function SingleTask({task, onEditSubmit}) {
               <option value='PM'>PM</option>
             </select>
           </label>
-          <button onSubmit={handleSubmitButton}>Save</button>
-          <button onSubmit={handleCancelEditButton}>Cancel</button>
+          <button type='submit' onSubmit={handleSubmitButton}>Save</button>
+          <button type='button' onClick={handleCancelEditButton}>Cancel</button>
         </form>
       ) : (
         <div>
@@ -134,7 +137,7 @@ function SingleTask({task, onEditSubmit}) {
           <p>Task: {name}</p>
           <p>Priority: {priority}</p>
           <p>Status: {status}</p>
-          <p>Deadline: {deadline}</p>
+          <p>Deadline: {deadline + ' ' + timePeriod}</p>
           <button onClick={handleEditButton}>Edit Task</button>
           <OpenModalButton
             buttonText = "Delete"

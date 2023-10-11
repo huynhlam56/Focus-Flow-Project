@@ -30,9 +30,6 @@ function AllTasks() {
   const workTasks = allTasks.filter((task) => task.category === 'Work')
 
 
-  console.log(personalTasks, "PERSONAL")
-  console.log(schoolTasks, "SCHOOl")
-  console.log(workTasks, "WORK")
   return (
     <div>
       <div>
