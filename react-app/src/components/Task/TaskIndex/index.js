@@ -41,9 +41,8 @@ function AllTasks() {
           <div key={task.id}>
             <OpenModalButton
               buttonText = {"Task: " + task.name}
-              modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit}/>}
+              modalComponent={<SingleTask task={task} onEditCreateSubmit={handleEditSubmit}/>}
             />
-            {/* {task.priority === true ? <p>Priority: yes </p> : null} */}
           </div>
         ))}
         <div>
@@ -52,9 +51,8 @@ function AllTasks() {
             <div key={task.id}>
               <OpenModalButton
                 buttonText = {"Task: " + task.name}
-                modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit} />}
+                modalComponent={<SingleTask task={task} onEditCreateSubmit={handleEditSubmit} />}
               />
-              {task.priority === true ? <p>Priority: yes </p> : null}
             </div>
           ))}
         </div>
@@ -64,9 +62,8 @@ function AllTasks() {
             <div key={task.id}>
               <OpenModalButton
                 buttonText = {"Task: " + task.name}
-                modalComponent={<SingleTask task={task} onEditSubmit={handleEditSubmit}/>}
+                modalComponent={<SingleTask task={task} onEditCreateSubmit={handleEditSubmit}/>}
               />
-              {/* {task.priority === true ? <p>Priority: yes </p> : null} */}
             </div>
           ))}
         </div>

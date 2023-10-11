@@ -15,11 +15,17 @@ function DeleteTaskModal({taskId}) {
     closeModal()
   }
 
+  const handleCancelDelete = e => {
+    e.preventDefault()
+    closeModal()
+  }
+
   return (
     <div>
-      <h4>Delete Tasks</h4>
+      <h4>Are you sure you want to delete this task?</h4>
       <div>
-        <button onClick={handleDeleteTask}>Delete</button>
+        <button onClick={handleDeleteTask}>Yes</button>
+        <button onClick={handleCancelDelete}>No</button>
       </div>
     </div>
   )

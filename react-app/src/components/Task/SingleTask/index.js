@@ -1,20 +1,12 @@
 import React, { useState } from "react"
 import './SingleTask.css'
 import { useModal } from "../../../context/Modal";
-import { fetchSingleTaskThunk } from "../../../store/task";
-import { useDispatch, useSelector } from "react-redux";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteTaskModal from "../DeleteTask";
 import ShowNote from "../../Note/ShowNotes";
 
+function SingleTask({task, onEditCreateSubmit}) {
 
-//task: "10:00 AM"
-function SingleTask({task, onEditSubmit}) {
-  // useEffect(() => {
-  //   dispatch(fetchSingleTaskThunk(taskId))
-  // }, [dispatch, taskId])
-  // const task = useSelector((state) => state.tasks.SingleTask)
-  const dispatch = useDispatch()
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState(task.name)
   const [priority, setPriority] = useState(task.priority)
@@ -24,7 +16,6 @@ function SingleTask({task, onEditSubmit}) {
   const [category, setCategory] = useState(task.category)
   const [errors, setErrors] = useState({})
 
-  const { closeModal } = useModal()
 
 
   const handleEditButton = () => {
@@ -46,8 +37,6 @@ function SingleTask({task, onEditSubmit}) {
   const handleSubmitButton = async(e) => {
     e.preventDefault()
 
-    console.log(deadline + ' ' + timePeriod)
-
     const editedTask = {
       id: task.id,
       name,
@@ -56,7 +45,8 @@ function SingleTask({task, onEditSubmit}) {
       deadline: deadline + ' ' + timePeriod,
       category
     }
-    await onEditSubmit(e, editedTask)
+    await onEditCreateSubmit(e, editedTask)
+    e.preventDefault()
     setIsEditing(false)
     setErrors({})
     setName(editedTask.name)
@@ -65,11 +55,8 @@ function SingleTask({task, onEditSubmit}) {
     setDeadline(editedTask.deadline.split(' ')[0])
     setTimePeriod(editedTask.deadline.split(' ')[1])
     setCategory(editedTask.category)
-    // closeModal()
   }
 
-  console.log(deadline, 'deadline')
-  console.log(timePeriod, 'timePeriod')
   if(!task || Object.keys(task) === 0) return null
 
   return (
@@ -78,11 +65,12 @@ function SingleTask({task, onEditSubmit}) {
         <form onSubmit={handleSubmitButton}>
           <label>
             Category:
-            <select value={category} onChange={(e) => setCategory(e.target.value)}>
+            <select value={category} onChange={(e) => setCategory(e.target.value)} required>
               <option value='Personal'>Personal</option>
               <option value='Work'>Work</option>
               <option value='School'>School</option>
             </select>
+            {errors && errors.category && <p id='error-msg'>*{errors.category}</p>}
           </label>
           <label>
             Task:
@@ -90,26 +78,30 @@ function SingleTask({task, onEditSubmit}) {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
+          {errors && errors.name && <p id='error-msg'>*{errors.name}</p>}
           </label>
           <label>
             Priority:
-            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+            <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
               <option value='true'>Yes</option>
               <option value='false'>No</option>
             </select>
+            {errors && errors.priority && <p id='error-msg'>*{errors.priority}</p>}
           </label>
           <label>
             Status:
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <select value={status} onChange={(e) => setStatus(e.target.value)} required>
               <option value='Not Started'>Not Started</option>
               <option value='In Progress'>In Progress</option>
               <option value='Incomplete'>Incomplete</option>
             </select>
+          {errors && errors.status && <p id='error-msg'>*{errors.status}</p>}
           </label>
           <label>
             Deadline:
-            <select value={deadline} onChange={(e) => setDeadline(e.target.value)}>
+            <select value={deadline} onChange={(e) => setDeadline(e.target.value)} required>
               <option value='12:00'>12:00</option>
               <option value='01:00'>01:00</option>
               <option value='02:00'>02:00</option>
@@ -123,10 +115,12 @@ function SingleTask({task, onEditSubmit}) {
               <option value='10:00'>10:00</option>
               <option value='11:00'>11:00</option>
             </select>
-            <select value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)}>
+          {errors && errors.deadline && <p id='error-msg'>*{errors.deadline}</p>}
+            <select value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)} required>
               <option value='AM'>AM</option>
               <option value='PM'>PM</option>
             </select>
+          {errors && errors.timePeriod && <p id='error-msg'>*{errors.timePeriod}</p>}
           </label>
           <button type='submit' onSubmit={handleSubmitButton}>Save</button>
           <button type='button' onClick={handleCancelEditButton}>Cancel</button>
@@ -135,7 +129,7 @@ function SingleTask({task, onEditSubmit}) {
         <div>
           <p>Category: {category}</p>
           <p>Task: {name}</p>
-          <p>Priority: {priority}</p>
+          <p>{priority === true ? <p>Priority: Yes </p> : <p>Priority: No</p>}</p>
           <p>Status: {status}</p>
           <p>Deadline: {deadline + ' ' + timePeriod}</p>
           <button onClick={handleEditButton}>Edit Task</button>
@@ -145,9 +139,9 @@ function SingleTask({task, onEditSubmit}) {
           />
         </div>
       )}
-    <div>
-      <ShowNote task={task} />
-    </div>
+      <div>
+        <ShowNote task={task} />
+      </div>
     </div>
   )
 }

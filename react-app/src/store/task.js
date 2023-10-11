@@ -44,9 +44,9 @@ export const loadNotes = (note) => ({
   note
 })
 
-export const createNote = (note) => ({
+export const createNote = (note, taskId) => ({
   type: CREATE_NOTE,
-  note
+  payload: {note, taskId}
 })
 
 export const updateNote = (note, taskId) => ({
@@ -100,7 +100,6 @@ export const updateTaskThunk = (editedTask, taskId) => async dispatch => {
   if(response.ok) {
     const data = await response.json()
     dispatch(updateTask(data))
-    dispatch(fetchAllTasksThunk())
     return data
   } else {
     const errors = await response.json()
@@ -158,11 +157,11 @@ export const createNoteThunk = (note, taskId) => async dispatch => {
   const response = await fetch (`/api/tasks/${taskId}/notes`, {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(note)
+    body: JSON.stringify({note})
   })
   if (response.ok) {
     const data = await response.json()
-    dispatch(createNote(data))
+    dispatch(createNote(data, taskId))
     return data
   }else {
     const errors = await response.json()
@@ -171,14 +170,15 @@ export const createNoteThunk = (note, taskId) => async dispatch => {
 }
 
 export const editNoteThunk = (note, noteId) => async dispatch => {
+
   const response = await fetch(`/api/notes/${noteId}`, {
     method: "PUT",
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(note)
+    body: JSON.stringify({note})
   })
   if (response.ok) {
     const data = await response.json()
-    dispatch(updateNote(data))
+    dispatch(updateNote(data, data.taskId))
     return data
   }else {
     const errors = await response.json()
@@ -223,7 +223,12 @@ const taskReducer = (state = initialState, action) => {
       return newState
     case UPDATE_NOTE:
       const updatedNote = action.payload.note
-      newState = {...state, Tasks: {...state.Tasks, [action.note.taskId]: {...state.Tasks[action.note.taskId], Note: updatedNote}}}
+      newState = {...state, Tasks: {...state.Tasks, [action.payload.taskId]: {...state.Tasks[action.payload.taskId], Note: updatedNote}}}
+      return newState
+    case CREATE_NOTE:
+      const newNote = action.payload.note
+      console.log('NEW NOTE', newNote)
+      newState = {...state, Tasks: {...state.Tasks, [action.payload.taskId]: {...state.Tasks[action.payload.taskId], Note: newNote}}}
       return newState
     case DELETE_NOTE:
       newState = {...state}

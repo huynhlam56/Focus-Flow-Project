@@ -12,6 +12,7 @@ def edit_note(noteId):
   """
   Update a note on a task
   """
+  print(noteId, "NOTE ID HERE")
   note = Note.query.get(noteId)
   task = Task.query.get(note.task_id)
 
