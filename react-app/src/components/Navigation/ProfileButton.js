@@ -4,9 +4,13 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -29,18 +33,19 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
-    dispatch(logout());
+    await dispatch(logout());
+    history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
   return (
-    <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+    <div className="nav-bar">
+      <button className='profile-btn' onClick={openMenu}>
+        <FontAwesomeIcon icon={faUser} style={{ color: '#403234' }} />
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -67,7 +72,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 

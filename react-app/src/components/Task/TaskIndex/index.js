@@ -5,10 +5,11 @@ import { fetchAllTasksThunk, updateTaskThunk } from "../../../store/task";
 import OpenModalButton from "../../OpenModalButton";
 import SingleTask from "../SingleTask";
 import CreateTask from "../CreateTask";
-import { withRouter, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function AllTasks() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const tasks = useSelector(state => state.tasks.Tasks)
   const user = useSelector(state => state.session.user)
 
@@ -17,8 +18,16 @@ function AllTasks() {
 
   },[dispatch])
 
+  const handleBackButton = (e) => {
+    history.push('/')
+  }
+
   if(!user || Object.keys(user).length === 0) return (
-    <h4>Please log in to view tasks</h4>
+    <div>
+      <button type='submit' onClick={handleBackButton}>Back To Home</button>
+      <h4>Please log in to view tasks</h4>
+    </div>
+
   )
 
   const handleEditSubmit = async(e, task) => {
@@ -79,7 +88,6 @@ function AllTasks() {
             </div>
           ))}
         </div>
-        :
         <div>
           <OpenModalButton
             buttonText="Add Task"
@@ -91,4 +99,4 @@ function AllTasks() {
   )
 }
 
-export default withRouter(AllTasks);
+export default AllTasks;

@@ -20,6 +20,7 @@ function SignupFormModal() {
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, lastName, password, firstName));
 			if (data) {
+				console.log('ERRORS IN FORM', data)
 				setErrors(data);
 			} else {
 				closeModal();
