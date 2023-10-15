@@ -10,6 +10,7 @@
 
 .note{
   color: #f7f3f5;
+  overflow-wrap: break-word;
 
 }
 /* #textarea{

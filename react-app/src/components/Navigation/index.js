@@ -37,12 +37,13 @@ function Navigation({ isLoaded }){
 				</li>
 			</ul>
 			<div>
-				<img></img>
-				<h1>From overwhelmed to on top of it</h1>
-				<h2>Focus Flow gives you the confidence that everything's
-					organized and accounted for, so you can make progress on
-					the things that are important to you
-				</h2>
+				<h2 className='inner-text-header'>Get a clear overview of everything on your plate and never lose track of an important task.</h2>
+			</div>
+			<div className='text1'>
+				<div className='center-text'>
+					<span className='quote'>"The key to happiness is really progress and growth and constantly working on yourself and developing something..."</span>
+					<span className='author'> -Lewis Howes</span>
+				</div>
 			</div>
 		</div>
 	)
