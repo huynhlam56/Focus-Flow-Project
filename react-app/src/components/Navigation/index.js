@@ -22,7 +22,7 @@ function Navigation({ isLoaded }){
 					<NavLink className='title' exact to="/">Focus Flow</NavLink>
 					<img className='logo' src={logo}></img>
 				</h1>
-				<li>
+				<li className='signup-login-btns'>
 					{/* <ProfileButton user={sessionUser} /> */}
 					<OpenModalButton
 						buttonText='Start For Free'
@@ -52,6 +52,7 @@ function Navigation({ isLoaded }){
 		<ul className='page-header'>
 			<h1 className='title-section'>
 				<NavLink className='title' exact to="/">Focus Flow</NavLink>
+				<img className='logo' src={logo}></img>
 			</h1>
 			<div className='tasks-profile-btn'>
 				<p>

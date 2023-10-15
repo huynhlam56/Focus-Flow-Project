@@ -65,7 +65,7 @@ ul.profile-dropdown{
   padding: 0px 10px ;
   position: absolute;
   right: 30px;
-  top: 88px;
+  top: 98px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,6 +138,12 @@ ul.profile-dropdown{
   padding: 10px;
   font-weight: bold;
   font-size: 16px;
+  cursor: pointer;
+}
+
+.signup-login-btns{
+  display: flex;
+  gap: 30px;
 }
 
 /* .landing-page {

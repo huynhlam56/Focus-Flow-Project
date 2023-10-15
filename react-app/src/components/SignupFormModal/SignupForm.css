@@ -1,7 +1,7 @@
 .signup-modal-div {
   align-items: center;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 300px;
   border: 2px solid rgb(246, 214, 159);
   padding: 20px;
@@ -38,4 +38,3 @@
 .error-msg{
   color:red;
 }
-
