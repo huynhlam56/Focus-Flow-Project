@@ -9,6 +9,9 @@
 
 .title-section{
   margin: 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
 }
 
 .title {
@@ -62,7 +65,7 @@ ul.profile-dropdown{
   padding: 0px 10px ;
   position: absolute;
   right: 30px;
-  top: 88px;
+  top: 98px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,4 +124,67 @@ ul.profile-dropdown{
   justify-content: space-between;
   align-items: baseline;
   padding: 0px;
+}
+
+.logo{
+  width: 90px;
+}
+
+.Sign-up-btn{
+  background-color: #7d341e;
+  color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.signup-login-btns{
+  display: flex;
+  gap: 30px;
+}
+
+/* .landing-page {
+  height: 100vh;
+} */
+
+.text1{
+  margin: auto;
+  width: 640px;
+  padding: 50px;
+  font-family: 'Style Script', cursive;
+  color: #2E475D;
+}
+
+.center-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+span.quote{
+  font-size: 50px;
+  text-align: center;
+  color: #2d4a42;
+}
+
+span.author{
+  padding-top: 20px;
+  font-size: 40px;
+  text-align: center;
+  color: #2d4a42;
+  font-weight: lighter;
+}
+
+.inner-text-header{
+  text-align: center;
+  padding: 0px 20px;
+  margin-top: 0px;
+  color: #923112;
+  font-family: ui-monospace;
+  font-weight: lighter;
 }

@@ -12,7 +12,7 @@
 }
 
 span{
-  color:#da8235;
+  color:#f8b1a1;
 }
 
 .edit-delete-btn-container{
@@ -31,7 +31,7 @@ span{
 }
 
 .edit-delete-btn:hover{
-  background-color: #aa601e;
+  background-color: #f8b1a1;
   /* background-color: #262220; */
 }
 
@@ -57,5 +57,5 @@ span{
 
 .save-cancel-task-btn:hover{
   /* background-color: #262220; */
-  background-color: #aa601e;
+  background-color: #f8b1a1;
 }

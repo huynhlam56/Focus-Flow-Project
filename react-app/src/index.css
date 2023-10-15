@@ -6,6 +6,8 @@ li {
 
 body{
   background-color: #ddc7bd;
+  background: url(https://mesmos.co/wp-content/uploads/2021/04/March-Wallpaper-1080p.jpg);
+  /* background-repeat: no-repeat; */
 }
 
 #root {
