@@ -1,0 +1,32 @@
+.handle-delete-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 20px;
+}
+
+.confirm-delete{
+  background-color: transparent;
+  border: 1px white solid;
+  border-radius: 10px;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+
+}
+
+.confirm-delete:hover{
+  background-color: #bb6d29;
+  border: 1px white solid;
+  border-radius: 10px;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-header{
+  color: #f6e7e5;
+  padding: 0px 10px;
+  text-align: center;
+}

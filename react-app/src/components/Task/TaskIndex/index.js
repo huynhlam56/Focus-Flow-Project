@@ -6,6 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import SingleTask from "../SingleTask";
 import CreateTask from "../CreateTask";
 import { useHistory } from "react-router-dom";
+import LoginFormModal from "../../LoginFormModal";
 
 function AllTasks() {
   const dispatch = useDispatch()
@@ -16,16 +17,12 @@ function AllTasks() {
   useEffect(() => {
     dispatch(fetchAllTasksThunk())
 
-  },[dispatch])
+  },[dispatch,user])
 
-  const handleBackButton = (e) => {
-    history.push('/')
-  }
 
   if(!user || Object.keys(user).length === 0) return (
     <div>
-      <button type='submit' onClick={handleBackButton}>Back To Home</button>
-      <h4>Please log in to view tasks</h4>
+      <h3>Please log in to view tasks</h3>
     </div>
 
   )
@@ -36,14 +33,14 @@ function AllTasks() {
   }
 
   if (!tasks || Object.keys(tasks).length === 0) return (
-  //   <div>
-  //     <h4>No Tasks Yet</h4>
-  //     <OpenModalButton
-  //       buttonText="Add Task"
-  //       modalComponent={<CreateTask />}
-  //     />
-  // </div>
-    null
+    <div className="body">
+      <h3>You Don't Have Any Tasks Yet For Today</h3>
+      <OpenModalButton
+        buttonText="Add Task"
+        modalComponent={<CreateTask />}
+        styleClass='create-task-btn'
+      />
+    </div>
   )
   const allTasks = Object.values(tasks)
 
@@ -54,44 +51,48 @@ function AllTasks() {
   return (
     <div>
       <div>
-        <h1>Your Goals For Today</h1>
+        <h1 className="tasks-header">Your Goals For Today...</h1>
       </div>
-      <div>
-        <h3>Personal</h3>
+      <div className="tasks-index">
+        <h3 className="category-header">Personal</h3>
         {personalTasks && personalTasks.map((task) => (
-          <div key={task.id}>
+          <li className='task-list' key={task.id}>
             <OpenModalButton
-              buttonText = {"Task: " + task.name}
+              buttonText = {task.name}
               modalComponent={<SingleTask task={task} onEditCreateSubmit={handleEditSubmit}/>}
+              styleClass='task-btn'
             />
-          </div>
+          </li>
         ))}
         <div>
-          <h3>Work</h3>
+          <h3 className="category-header">Work</h3>
           {workTasks && workTasks.map((task) => (
-            <div key={task.id}>
+            <li className='task-list' key={task.id}>
               <OpenModalButton
-                buttonText = {"Task: " + task.name}
+                buttonText = {task.name}
                 modalComponent={<SingleTask task={task} onEditCreateSubmit={handleEditSubmit} />}
+                styleClass='task-btn'
               />
-            </div>
+            </li>
           ))}
         </div>
         <div>
-          <h3>School</h3>
+          <h3 className="category-header">School</h3>
           {schoolTasks && schoolTasks.map((task) => (
-            <div key={task.id}>
+            <li className='task-list' key={task.id}>
               <OpenModalButton
-                buttonText = {"Task: " + task.name}
+                buttonText = {task.name}
                 modalComponent={<SingleTask task={task} onEditCreateSubmit={handleEditSubmit}/>}
+                styleClass='task-btn'
               />
-            </div>
+            </li>
           ))}
         </div>
-        <div>
+        <div className="add-task-btn-container">
           <OpenModalButton
             buttonText="Add Task"
             modalComponent={<CreateTask />}
+            styleClass='create-task-btn'
           />
         </div>
       </div>

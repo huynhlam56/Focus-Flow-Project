@@ -1,0 +1,61 @@
+.task-fields{
+  color: #f6e7e5;
+  margin: 15px 10px;
+}
+
+.task-name{
+  color: #da8235;
+  margin: 15px;
+  font-weight: lighter;
+  font-family: serif;
+  letter-spacing: 2px;
+}
+
+span{
+  color:#da8235;
+}
+
+.edit-delete-btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.edit-delete-btn{
+  background-color: transparent;
+  border: 1px white solid;
+  border-radius: 10px;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+}
+
+.edit-delete-btn:hover{
+  background-color: #aa601e;
+  /* background-color: #262220; */
+}
+
+.single-task-container{
+  width: 300px;
+
+}
+
+.add-cancel-btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.save-cancel-task-btn{
+  background-color: transparent;
+  border: 1px white solid;
+  border-radius: 10px;
+  width: 100px;
+  color: white;
+  cursor: pointer;
+}
+
+.save-cancel-task-btn:hover{
+  /* background-color: #262220; */
+  background-color: #aa601e;
+}

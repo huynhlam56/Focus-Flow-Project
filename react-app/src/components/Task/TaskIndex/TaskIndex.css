@@ -1,0 +1,49 @@
+.create-task-btn {
+  border: 1px solid #f7f1f0;
+  background-color: #403234;
+  border-radius: 10px;
+  width: 100px;
+  padding: 10px 10px;
+  color: #f7f3f5;
+  /* font-weight: bold; */
+  cursor: pointer;
+}
+
+.body {
+  margin-top: 50px
+}
+
+.tasks-header {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 400;
+  color: #013328;
+
+}
+
+.category-header {
+  font-family: 'Style Script', cursive;
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: #793c2d;
+}
+
+.task-btn{
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  /* color: #54494b; */
+  color:#403234 ;
+  font-family: 'Shadows Into Light', cursive;
+  /* font-family: 'Times New Roman', Times, serif; */
+  font-weight: lighter;
+}
+
+.task-list {
+  list-style: circle;
+  font-size: 25px;
+}
+
+.add-task-btn-container{
+  padding-top: 40px;
+}

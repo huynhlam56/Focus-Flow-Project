@@ -4,9 +4,9 @@ import { useEffect} from "react";
 import { fetchNotesThunk } from "../../../store/task";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteNoteModal from "../DeleteNote";
-import EditNoteModal from "../EditNote";
 import NoteForm from "../NoteForm";
-import CreateNote from "../CreateNote";
+import './ShowNotes.css'
+import '../CreateNote/CreateNote.css'
 
 
 const ShowNote = ({task}) => {
@@ -36,13 +36,13 @@ const ShowNote = ({task}) => {
 
   if (!note || Object.keys(note).length === 0) {
     return (
-      <div>
-        <h4>Note: </h4>
+      <div className="note-container">
+        <h4 className="note-header">NOTE:</h4>
         <div>
           {isEditing ?
           <NoteForm onEditCreateSubmit={handleCreateSubmit} task={task} note={note} formType='create' />
           :
-          <button type="button" onClick={handleCreateButton}>Add Note</button>
+          <button className='add-note-btn' type="button" onClick={handleCreateButton}>Add Note</button>
           }
         </div>
       </div>
@@ -50,16 +50,17 @@ const ShowNote = ({task}) => {
   };
 
   return (
-    <div>
-      <h4>NOTE:</h4>
+    <div className="note-container">
+      <h4 className="note-header">NOTE:</h4>
       {isEditing ? <NoteForm onEditCreateSubmit={handleEditSubmit} task={task} note={note} formType="edit"/> :
         <div>
-          <p>{note.note}</p>
-          <div>
-            <button type="button" onClick={handleEditButton}>Edit</button>
+          <p className="note">{note.note}</p>
+          <div className="edit-delete-btn-container">
+            <button className='edit-delete-btn'type="button" onClick={handleEditButton}>Edit</button>
             <OpenModalButton
               buttonText='Delete'
               modalComponent={<DeleteNoteModal noteId={note.id} taskId={task.id}/>}
+              styleClass='edit-delete-btn'
             />
           </div>
         </div>

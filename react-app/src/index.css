@@ -5,5 +5,17 @@ li {
 }
 
 body{
-  background-color: #E2C2B3;
+  background-color: #ddc7bd;
+}
+
+#root {
+  margin: 20px;
+}
+
+#error-msg{
+  color:red;
+}
+
+select{
+  height: 30px;
 }

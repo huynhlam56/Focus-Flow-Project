@@ -19,7 +19,8 @@
   font-weight: lighter;
   color: #403234;
   letter-spacing: 15px;
-  font-size: 55px;
+  font-size: 65px;
+  font-family: 'Style Script', cursive;
 }
 
 .tasks-profile-btn{
@@ -33,9 +34,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 0px 20px 0px 20px;
-  margin: 0px;
+  padding: 0px;
+  align-items: stretch;
 }
 
 .tasks-link{
@@ -43,32 +43,82 @@
   font-size: 20px;
 }
 
-/* .profile-btn {
+.profile-btn {
   border: none;
   background: none;
   font-size: 20px;
-} */
+}
 
-/* .profile-dropdown.hidden {
+.profile-dropdown.hidden {
  display: none;
-} */
+}
 
-/* ul.profile-dropdown{
+ul.profile-dropdown{
   gap: 15px;
+  /* width: 100%; */
 }
 
 .profile-dropdown{
+  padding: 0px 10px ;
   position: absolute;
-  top: 100%;
-  right: 1%;
-  z-index: 1;
-  background-color: white;
+  right: 30px;
+  top: 88px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border:1px solid rgb(204, 204, 204);
+  box-shadow: rgba(100, 100, 111, 0.15) 0px 7px 29px 0px;
+  height: 150px;
+  width:fit-content;
   border-radius: 15px;
-  box-shadow: 0px 3px 8px rgba(165, 163, 163, 0.5);
-  padding: 10px;
-  margin-top: 10px;
-  width: auto;
-  width: 200px;
-} */
+  background-color: #97978d;
+  color: #262220
+}
+
+.profile-dropdown-username {
+  margin: 0px
+}
+
+.logout-btn{
+  border: 1px solid #f7f1f0;
+  background-color: transparent;
+  border-radius: 10px;
+  width: 100%;
+  padding: 7px 0px;
+  color: #262220;
+  font-weight: bold;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.signup-login-btn {
+  border: 1px solid #f7f1f0;
+  background-color: transparent;
+  border-radius: 10px;
+  width: 100px;
+  padding: 7px 0px;
+  color: #262220;
+  font-weight: bold;
+  gap: 20px;
+}
+
+.signup-login-btn-container {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.header-nouser {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0px;
+}

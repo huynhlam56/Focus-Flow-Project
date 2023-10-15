@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from 'react-redux'
 import { useModal } from "../../../context/Modal";
 import { deleteTaskThunk, fetchAllTasksThunk } from "../../../store/task";
-
+import './DeleteTask.css'
 
 function DeleteTaskModal({taskId}) {
   const dispatch = useDispatch()
@@ -22,10 +22,10 @@ function DeleteTaskModal({taskId}) {
 
   return (
     <div>
-      <h4>Are you sure you want to delete this task?</h4>
-      <div>
-        <button onClick={handleDeleteTask}>Yes</button>
-        <button onClick={handleCancelDelete}>No</button>
+      <h4 className="delete-header">Have you completed this task?</h4>
+      <div className="handle-delete-container">
+        <button className='confirm-delete' onClick={handleDeleteTask}>Yes</button>
+        <button className='confirm-delete' onClick={handleCancelDelete}>No</button>
       </div>
     </div>
   )

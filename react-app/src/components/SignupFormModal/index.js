@@ -18,9 +18,8 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, email, lastName, password, firstName));
+			const data = await dispatch(signUp(username, email,  firstName, lastName, password));
 			if (data) {
-				console.log('ERRORS IN FORM', data)
 				setErrors(data);
 			} else {
 				closeModal();
@@ -73,7 +72,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				{errors && errors.first_name && <p className="error-msg">*{errors.first_name}</p>}
+				{errors && errors.firstName && <p className="error-msg">*{errors.firstName}</p>}
 				<label>
 					Last Name
 					<input
