@@ -20,10 +20,10 @@ function DeleteNoteModal({noteId, taskId}) {
 
   return (
     <div>
-      <h5>Remove Note</h5>
-      <div>
-        <button onClick={handleDeleteNote}>Remove</button>
-        <button onClick={handleCancel}>Cancel</button>
+      <h4 className="delete-header">Remove Note?</h4>
+      <div className="handle-delete-container">
+        <button className='confirm-delete' onClick={handleDeleteNote}>Yes</button>
+        <button className='confirm-delete' onClick={handleCancel}>Cancel</button>
       </div>
     </div>
   )

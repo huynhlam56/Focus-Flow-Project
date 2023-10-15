@@ -1,0 +1,17 @@
+.note-container{
+  width: 300px;
+  padding: 15px 10px;
+}
+
+.note-header{
+  color: #da8235;
+  text-decoration: underline;
+}
+
+.note{
+  color: #f7f3f5;
+
+}
+/* #textarea{
+  max-width: 80%;
+} */

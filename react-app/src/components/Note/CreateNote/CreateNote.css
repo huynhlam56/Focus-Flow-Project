@@ -1,0 +1,24 @@
+.add-note-btn{
+  border: 1px solid #f7f1f0;
+  background-color: #403234;
+  border-radius: 10px;
+  width: -webkit-fill-available;
+  padding: 10px 10px;
+  color: #f7f3f5;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-note-btn:hover{
+  /* background-color: #262220; */
+    background-color: #aa601e;
+}
+
+.note-textarea{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f7f3f5;
+}
+
+

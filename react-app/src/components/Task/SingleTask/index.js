@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import './SingleTask.css'
-import { useModal } from "../../../context/Modal";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteTaskModal from "../DeleteTask";
 import ShowNote from "../../Note/ShowNotes";
+import { useModal } from "../../../context/Modal";
 
 function SingleTask({task, onEditCreateSubmit}) {
 
@@ -15,7 +15,7 @@ function SingleTask({task, onEditCreateSubmit}) {
   const [timePeriod, setTimePeriod] = useState(task.deadline.split(' ')[1])
   const [category, setCategory] = useState(task.category)
   const [errors, setErrors] = useState({})
-
+  const { closeModal } = useModal()
 
 
   const handleEditButton = () => {
@@ -55,15 +55,28 @@ function SingleTask({task, onEditCreateSubmit}) {
     setDeadline(editedTask.deadline.split(' ')[0])
     setTimePeriod(editedTask.deadline.split(' ')[1])
     setCategory(editedTask.category)
+
+    closeModal()
   }
 
   if(!task || Object.keys(task) === 0) return null
 
   return (
-    <div>
+    <div className="task-form-container">
       {isEditing ? (
-        <form onSubmit={handleSubmitButton}>
-          <label>
+        <form className='task-form' onSubmit={handleSubmitButton}>
+          <label className="labels">
+            Task:
+            <input
+              className="task-name-input"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          {errors && errors.name && <p id='error-msg'>*{errors.name}</p>}
+          </label>
+          <label className="labels">
             Category:
             <select value={category} onChange={(e) => setCategory(e.target.value)} required>
               <option value='Personal'>Personal</option>
@@ -72,17 +85,7 @@ function SingleTask({task, onEditCreateSubmit}) {
             </select>
             {errors && errors.category && <p id='error-msg'>*{errors.category}</p>}
           </label>
-          <label>
-            Task:
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          {errors && errors.name && <p id='error-msg'>*{errors.name}</p>}
-          </label>
-          <label>
+          <label className="labels">
             Priority:
             <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
               <option value='true'>Yes</option>
@@ -90,7 +93,7 @@ function SingleTask({task, onEditCreateSubmit}) {
             </select>
             {errors && errors.priority && <p id='error-msg'>*{errors.priority}</p>}
           </label>
-          <label>
+          <label className="labels">
             Status:
             <select value={status} onChange={(e) => setStatus(e.target.value)} required>
               <option value='Not Started'>Not Started</option>
@@ -99,9 +102,9 @@ function SingleTask({task, onEditCreateSubmit}) {
             </select>
           {errors && errors.status && <p id='error-msg'>*{errors.status}</p>}
           </label>
-          <label>
+          <label className="label-deadline">
             Deadline:
-            <select value={deadline} onChange={(e) => setDeadline(e.target.value)} required>
+            <select className='time' value={deadline} onChange={(e) => setDeadline(e.target.value)} required>
               <option value='12:00'>12:00</option>
               <option value='01:00'>01:00</option>
               <option value='02:00'>02:00</option>
@@ -116,27 +119,32 @@ function SingleTask({task, onEditCreateSubmit}) {
               <option value='11:00'>11:00</option>
             </select>
           {errors && errors.deadline && <p id='error-msg'>*{errors.deadline}</p>}
-            <select value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)} required>
+            <select className='time' value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)} required>
               <option value='AM'>AM</option>
               <option value='PM'>PM</option>
             </select>
           {errors && errors.timePeriod && <p id='error-msg'>*{errors.timePeriod}</p>}
           </label>
-          <button type='submit' onSubmit={handleSubmitButton}>Save</button>
-          <button type='button' onClick={handleCancelEditButton}>Cancel</button>
+          <div className="add-cancel-btn-container">
+            <button className='save-cancel-task-btn' type='submit' onSubmit={handleSubmitButton}>Save</button>
+            <button className='save-cancel-task-btn' type='button' onClick={handleCancelEditButton}>Cancel</button>
+          </div>
         </form>
       ) : (
-        <div>
-          <p>Category: {category}</p>
-          <p>Task: {name}</p>
-          <p>{priority === true ? <p>Priority: Yes </p> : <p>Priority: No</p>}</p>
-          <p>Status: {status}</p>
-          <p>Deadline: {deadline + ' ' + timePeriod}</p>
-          <button onClick={handleEditButton}>Edit Task</button>
-          <OpenModalButton
-            buttonText = "Delete"
-            modalComponent={<DeleteTaskModal taskId={task.id}/>}
-          />
+        <div className="single-task-container">
+          <h3 className="task-fields"><span>Task:</span> {name}</h3>
+          <p className="task-fields"><span>Category:</span> {category}</p>
+          <p className="task-fields">{priority === true ? <p><span>Priority:</span> Yes </p> : <p><span>Priority:</span> No</p>}</p>
+          <p className="task-fields"><span>Status:</span> {status}</p>
+          <p className="task-fields"><span>Deadline:</span> {deadline + ' ' + timePeriod}</p>
+          <div className="edit-delete-btn-container">
+            <button className="edit-delete-btn" onClick={handleEditButton}>Edit Task</button>
+            <OpenModalButton
+              buttonText = "Delete"
+              modalComponent={<DeleteTaskModal taskId={task.id}/>}
+              styleClass='edit-delete-btn'
+            />
+          </div>
         </div>
       )}
       <div>
@@ -145,6 +153,5 @@ function SingleTask({task, onEditCreateSubmit}) {
     </div>
   )
 }
-
 
 export default SingleTask;

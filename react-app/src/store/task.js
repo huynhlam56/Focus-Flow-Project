@@ -115,13 +115,16 @@ export const createTaskThunk =(task) => async dispatch => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(task)
   })
+  console.log('RESPONSE', response)
   if (response.ok) {
     const newTask = await response.json()
     dispatch(createTask(newTask))
     return newTask
   }else {
-    const errors = await response.json()
-    return errors
+    // const errors = await response.json()
+    // console.log('NOT OK', errors)
+    // throw new Error(errors)
+    throw await response.json()
   }
 }
 
@@ -164,8 +167,9 @@ export const createNoteThunk = (note, taskId) => async dispatch => {
     dispatch(createNote(data, taskId))
     return data
   }else {
-    const errors = await response.json()
-    return errors
+    // const errors = await response.json()
+    // return errors
+    throw await response.json()
   }
 }
 
@@ -181,8 +185,9 @@ export const editNoteThunk = (note, noteId) => async dispatch => {
     dispatch(updateNote(data, data.taskId))
     return data
   }else {
-    const errors = await response.json()
-    return errors
+    // const errors = await response.json()
+    // return errors
+    throw await response.json()
   }
 }
 

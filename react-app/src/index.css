@@ -3,3 +3,19 @@
 li {
   list-style: none;
 }
+
+body{
+  background-color: #ddc7bd;
+}
+
+#root {
+  margin: 20px;
+}
+
+#error-msg{
+  color:red;
+}
+
+select{
+  height: 30px;
+}

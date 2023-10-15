@@ -34,11 +34,14 @@ const NoteForm = ({onEditCreateSubmit, task, note, formType}) => {
     <div>
       <form onSubmit={handleSubmitNote}>
         <textarea
+          style={{width: '300px', height: '100px', border: 'solid 1px black', resize: "none"}}
+          className="note-textarea"
           type='text'
           value={editNote}
           onChange={(e) => setEditNote(e.target.value)}
         />
-        <button type='submit'>Save</button>
+        {errors && errors.note && <p className="error-msg">{errors.note}</p>}
+        <button className='save-cancel-task-btn' type='submit'>Save</button>
       </form>
     </div>
   )
