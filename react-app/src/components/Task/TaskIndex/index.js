@@ -17,7 +17,7 @@ function AllTasks() {
   useEffect(() => {
     dispatch(fetchAllTasksThunk())
 
-  },[dispatch,user])
+  },[dispatch])
 
 
   if(!user || Object.keys(user).length === 0) return (

@@ -26,12 +26,11 @@ function LoginFormModal() {
     }
   };
 
-  const handleDemoUserLogin = e => {
-    e.preventDefault()
+  const handleDemoUserLogin = async e => {
     setErrors([])
-    dispatch(login('demouser@appacademy.io', 'password'))
-      .then(history.push('/tasks'))
-      .then(closeModal())
+    await dispatch(login('demouser@appacademy.io', 'password'))
+    history.push('/tasks')
+    closeModal()
   }
 
   return (

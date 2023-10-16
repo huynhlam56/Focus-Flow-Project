@@ -28,9 +28,6 @@ function App() {
           <Route path="/tasks" >
             <AllTasks />
           </Route>
-          {/* <Route path="/tasks/:taskId">
-            <SingleTask />
-          </Route> */}
         </Switch>
       )}
     </>
