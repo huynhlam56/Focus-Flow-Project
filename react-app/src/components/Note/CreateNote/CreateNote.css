@@ -11,7 +11,7 @@
 
 .add-note-btn:hover{
   /* background-color: #262220; */
-    background-color: #aa601e;
+    background-color: #f8b1a1;
 }
 
 .note-textarea{
@@ -20,5 +20,3 @@
   padding: 0px;
   background-color: #f7f3f5;
 }
-
-

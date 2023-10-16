@@ -92,6 +92,11 @@ ul.profile-dropdown{
   padding: 7px 0px;
   color: #262220;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.logout-btn:hover{
+  background-color: #555555;
 }
 
 .nav-bar {
