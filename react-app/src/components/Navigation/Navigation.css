@@ -51,6 +51,11 @@
   padding: 10px;
 }
 
+.tasks-link:hover{
+  cursor: pointer;
+  background-color: #413e3d;
+}
+
 .profile-btn {
   border: none;
   background: none;
