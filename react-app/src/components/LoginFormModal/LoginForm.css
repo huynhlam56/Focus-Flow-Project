@@ -35,6 +35,10 @@
   font-weight: bold;
 }
 
+.demo-submit-button{
+  width: 225px;
+}
+
 .login-form-submit-button:hover,
 .demo-submit-button:hover{
   background-color: rgb(246, 214, 159);
