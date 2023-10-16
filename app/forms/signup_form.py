@@ -21,13 +21,13 @@ def username_exists(form, field):
 
 def valid_name(form, field):
     name = field.data
-    if len(name) < 1:
+    if len(name) < 2:
         print('NAME', name)
         raise ValidationError('Please enter a valid name')
 
 class SignUpForm(FlaskForm):
     username = StringField('username', validators=[DataRequired(), Length(min=4, max=10), username_exists])
     email = StringField('email', validators=[DataRequired(), Email(), user_exists])
-    first_name = StringField('first_name', validators=[DataRequired(), Length(min=1)])
-    last_name = StringField('last_name', validators=[DataRequired(), Length(min=1)])
+    first_name = StringField('first_name', validators=[DataRequired(), valid_name])
+    last_name = StringField('last_name', validators=[DataRequired(), valid_name])
     password = StringField('password', validators=[DataRequired(), Length(min=8)])
