@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -7,13 +7,19 @@ import { faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LoginFormModal from '../LoginFormModal';
 import logo from '../images/logo.png'
-import img from '../images/flowers.jpg'
 import OpenModalButton from '../OpenModalButton';
 import SignupFormModal from '../SignupFormModal';
+import { useHistory } from 'react-router-dom';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 	// if (sessionUser) return <Redirect to="/" />;
+	const history = useHistory()
+	const handleViewTasks = e => {
+		e.preventDefault()
+		history.push('/tasks')
+	}
+
 
 	if (!sessionUser) return (
 		<div className='landing-page'>
@@ -56,9 +62,10 @@ function Navigation({ isLoaded }){
 			</h1>
 			<div className='tasks-profile-btn'>
 				<p>
-					<NavLink className='tasks-link' exact to='/tasks'>
+					{/* <NavLink className='tasks-link' exact to='/tasks'>
 						<FontAwesomeIcon icon={faListCheck} style={{ color: '#403234' }} />
-					</NavLink>
+					</NavLink> */}
+					<button className='tasks-link' onClick={handleViewTasks}>View Tasks</button>
 				</p>
 				{isLoaded && (
 					<li>
