@@ -18,6 +18,7 @@ function LoginFormModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
+    history.push('/tasks')
     if (data) {
       setErrors(data);
     } else {
@@ -62,9 +63,9 @@ function LoginFormModal() {
           />
           {errors && errors.password && <p className="login-input-error">*{errors.password} </p>}
         </label>
-        <button className="demo-submit-button" onClick={handleDemoUserLogin}>Log In As DemoUser</button>
         <button className='login-form-submit-button'>Log In</button>
       </form>
+      <button className="demo-submit-button" onClick={handleDemoUserLogin}>Log In As DemoUser</button>
     </div>
   );
 }
