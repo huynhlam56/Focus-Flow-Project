@@ -43,7 +43,12 @@
 
 .tasks-link{
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
+  background-color: #262220;
+  color: whitesmoke;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .profile-btn {
@@ -66,7 +71,7 @@ ul.profile-dropdown{
   padding: 0px 10px ;
   position: absolute;
   right: 30px;
-  top: 98px;
+  top: 108px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -145,6 +150,9 @@ ul.profile-dropdown{
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
+}
+.Sign-up-btn:hover{
+  background-color: #552314;
 }
 
 .signup-login-btns{
