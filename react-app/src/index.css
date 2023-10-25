@@ -1,13 +1,17 @@
 /* TODO Add site wide styles */
+/* @import url(fontawesome-all.min.css); */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
 li {
   list-style: none;
 }
 
 body{
-  background-color: #ddc7bd;
-  background: url(https://mesmos.co/wp-content/uploads/2021/04/March-Wallpaper-1080p.jpg);
+  /* background-color: #ddc7bd; */
+  background-color: rgb(88, 88, 88);
+  /* background: url(https://mesmos.co/wp-content/uploads/2021/04/March-Wallpaper-1080p.jpg); */
   /* background-repeat: no-repeat; */
+  z-index: 2;
 }
 
 #root {

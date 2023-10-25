@@ -9,17 +9,19 @@
   flex-direction: column;
 }
 
+.sign-up-header{
+  margin-top: 0px;
+}
 .sign-up-form {
   display: flex;
   flex-direction: column;
   width: 100%;
-
+  gap: 10px;
 }
-
 .sign-up-form label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .signup-form-submit-btn:hover{
@@ -28,11 +30,13 @@
 }
 
 .signup-form-submit-btn {
-  height: 32px;
-  margin-top: 7px;
+  /* height: 32px;
+  margin-top: 10px; */
   background-color: rgb(255, 255, 255);
   border-radius: 31px;
   font-weight: bold;
+  color: hsl(25.74deg 86.85% 54.72%);
+  border: 1px solid hsl(25.74deg 86.85% 54.72%);
 }
 
 .error-msg{

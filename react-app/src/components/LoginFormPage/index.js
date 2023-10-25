@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
+import Button from '@mui/material/Button';
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -51,7 +51,8 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        {/* <button type="submit">Log In</button> */}
+        <Button type="submit" variant="outlined">Log In</Button>
       </form>
     </div>
   );

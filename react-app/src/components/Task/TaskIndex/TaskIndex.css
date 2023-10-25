@@ -22,14 +22,15 @@
   font-weight: 400;
   color: #013328;
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 100px;
   font-size: 40px;
 }
 
 .category-header {
   font-family: 'Style Script', cursive;
   font-size: 35px;
-  margin-bottom: 5px;
+  margin: 15px 0px;
+  margin-top: 50px;
   color: #793c2d;
 }
 
@@ -50,8 +51,21 @@
 .task-list {
   list-style: circle;
   font-size: 25px;
+  border-bottom: 1px solid #6d6c6c;
+  padding: 10px 0px;
 }
 
 .add-task-btn-container{
   padding-top: 40px;
+}
+
+.title-task-index{
+  text-decoration: none;
+  cursor: pointer;
+  color: #403234;
+  font-weight: bolder;
+  letter-spacing: 10px;
+  font-size: 70px;
+  /* font-family: 'Style Script', cursive; */
+  font-family: 'Montserrat', sans-serif;
 }

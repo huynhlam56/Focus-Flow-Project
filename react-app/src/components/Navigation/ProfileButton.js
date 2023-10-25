@@ -7,7 +7,6 @@ import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, Redirect } from 'react-router-dom';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -20,6 +19,7 @@ function ProfileButton({ user }) {
     setShowMenu(true);
   };
 
+  const bodyElement = document.body
   useEffect(() => {
     if (!showMenu) return;
 
@@ -37,6 +37,7 @@ function ProfileButton({ user }) {
   const handleLogout = async (e) => {
     e.preventDefault();
     await dispatch(logout());
+    bodyElement.style.backgroundColor = 'rgb(88, 88, 88)'
     history.push('/')
   };
 

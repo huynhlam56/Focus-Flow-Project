@@ -3,6 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import './CreateTask.css'
 import { createTaskThunk, fetchAllTasksThunk } from "../../../store/task";
 import { useModal } from "../../../context/Modal";
+import { TextField, Checkbox } from "@mui/material";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Button from '@mui/material/Button';
+import FlagIcon from '@mui/icons-material/Flag';
+
 
 function CreateTask() {
   const dispatch = useDispatch()
@@ -41,7 +48,7 @@ function CreateTask() {
   return (
     <div className="task-form-container">
       <form className='task-form' onSubmit={handleSubmit}>
-        <label className="labels">
+        {/* <label className="labels">
           Task:
           <input
             className="task-name-input"
@@ -51,8 +58,9 @@ function CreateTask() {
             required
           />
         {errors && errors.name && <p id='error-msg'>*{errors.name}</p>}
-        </label>
-        <label className="labels">
+        </label> */}
+        <TextField id="standard-basic" error={errors.name} helperText={errors.name} label="Task" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        {/* <label className="labels">
           Category:
           <select value={category} onChange={(e) => setCategory(e.target.value)} required>
             <option value='Personal'>Personal</option>
@@ -60,15 +68,32 @@ function CreateTask() {
             <option value='School'>School</option>
           </select>
         {errors && errors.category && <p id='error-msg'>*{errors.category}</p>}
-        </label>
-        <label className="labels">
+        </label> */}
+        <RadioGroup
+          row
+          aria-labelledby="demo-row-radio-buttons-group-label"
+          name="row-radio-buttons-group"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          >
+          <FormControlLabel value="Personal" control={<Radio />} label="Personal" />
+          <FormControlLabel value="Work" control={<Radio />} label="Work" />
+          <FormControlLabel value="School" control={<Radio />} label="School" />
+        </RadioGroup>
+        {/* <label className="labels">
           Priority:
           <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
             <option value={true}>Yes</option>
             <option value={false}>No</option>
           </select>
         {errors && errors.priority && <p id='error-msg'>*{errors.priority}</p>}
-        </label>
+        </label> */}
+        <FormControlLabel
+          value={priority}
+          control={<Checkbox checked={priority} />}
+          label="Priority"
+          onChange={(e) => setPriority(e.target.checked)}
+        />
         <label className="labels">
           Status:
           <select value={status} onChange={(e) => setStatus(e.target.value)} required>

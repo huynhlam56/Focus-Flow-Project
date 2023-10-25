@@ -5,6 +5,7 @@ import DeleteTaskModal from "../DeleteTask";
 import ShowNote from "../../Note/ShowNotes";
 import { useModal } from "../../../context/Modal";
 
+
 function SingleTask({task, onEditCreateSubmit}) {
 
   const [isEditing, setIsEditing] = useState(false)
