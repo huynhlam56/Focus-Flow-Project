@@ -152,6 +152,7 @@ ul.profile-dropdown{
   grid-gap: 20PX;
   gap: 20PX;
   mix-blend-mode: color-dodge;
+  font-size: xx-large;
 }
 
 .logo{
