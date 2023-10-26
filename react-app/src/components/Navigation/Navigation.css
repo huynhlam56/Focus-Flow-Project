@@ -160,17 +160,18 @@ ul.profile-dropdown{
 }
 
 .Sign-up-btn{
-  background-color: #7d341e;
-  color: white;
+  /* background-color: #7d341e; */
+  background-color: transparent;
+  color: #fff;
   border: 1px solid;
   border-radius: 10px;
   padding: 10px;
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 25px;
   cursor: pointer;
 }
 .Sign-up-btn:hover{
-  background-color: #552314;
+  background-color: #491d0f;
 }
 
 .signup-login-btns{
@@ -186,6 +187,7 @@ ul.profile-dropdown{
   /* font-family: 'Style Script', cursive; */
   font-family: 'Playfair Display', serif;
   color: #2E475D;
+  mix-blend-mode: color-dodge;
 }
 
 .center-text{
@@ -197,9 +199,9 @@ ul.profile-dropdown{
 }
 
 span.quote{
-  font-size: 25px;
+  font-size: 33px;
   text-align: center;
-  color: #dddada;
+  color: #fafafa;
   opacity: 1;
   font-family: 'Parisienne', cursive;
 }
