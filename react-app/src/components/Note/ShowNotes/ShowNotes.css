@@ -4,13 +4,15 @@
 }
 
 .note-header{
-  color: #f8b1a1;
+  color: #fa8c74;
   text-decoration: underline;
+  margin-bottom: 10px;
 }
 
 .note{
-  color: #f7f3f5;
+  color: #636363;
   overflow-wrap: break-word;
+  margin: 0px;
 }
 
 /* #textarea{

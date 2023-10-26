@@ -1,5 +1,5 @@
 .task-fields{
-  color: #f6e7e5;
+  color: #636363;
   margin: 15px 10px;
 }
 
@@ -12,7 +12,7 @@
 }
 
 span{
-  color:#f8b1a1;
+  color:#636363;
 }
 
 .edit-delete-btn-container{
@@ -22,7 +22,7 @@ span{
 }
 
 .edit-delete-btn{
-  background-color: transparent;
+  background-color: #fa8c74;
   border: 1px white solid;
   border-radius: 10px;
   width: 100px;
@@ -58,4 +58,8 @@ span{
 .save-cancel-task-btn:hover{
   /* background-color: #262220; */
   background-color: #f8b1a1;
+}
+
+.span-properties{
+  color: #fa8c74;
 }

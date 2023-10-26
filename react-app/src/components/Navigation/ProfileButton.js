@@ -37,6 +37,7 @@ function ProfileButton({ user }) {
   const handleLogout = async (e) => {
     e.preventDefault();
     await dispatch(logout());
+    bodyElement.style.backgroundImage ='none'
     bodyElement.style.backgroundColor = 'rgb(88, 88, 88)'
     history.push('/')
   };

@@ -133,11 +133,11 @@ function SingleTask({task, onEditCreateSubmit}) {
         </form>
       ) : (
         <div className="single-task-container">
-          <h3 className="task-fields"><span>Task:</span> {name}</h3>
-          <p className="task-fields"><span>Category:</span> {category}</p>
-          <p className="task-fields">{priority === true ? <p><span>Priority:</span> Yes </p> : <p><span>Priority:</span> No</p>}</p>
-          <p className="task-fields"><span>Status:</span> {status}</p>
-          <p className="task-fields"><span>Deadline:</span> {deadline + ' ' + timePeriod}</p>
+          <h3 className="task-fields"><span className="span-properties">Task:</span> {name}</h3>
+          <p className="task-fields"><span className="span-properties">Category:</span> {category}</p>
+          <p className="task-fields">{priority === true ? <p><span className="span-properties">Priority:</span> Yes </p> : <p><span>Priority:</span> No</p>}</p>
+          <p className="task-fields"><span className="span-properties">Status:</span> {status}</p>
+          <p className="task-fields"><span className="span-properties">Deadline:</span> {deadline + ' ' + timePeriod}</p>
           <div className="edit-delete-btn-container">
             <button className="edit-delete-btn" onClick={handleEditButton}>Edit Task</button>
             <OpenModalButton

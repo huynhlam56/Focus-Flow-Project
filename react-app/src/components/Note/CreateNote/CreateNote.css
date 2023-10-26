@@ -20,3 +20,10 @@
   padding: 0px;
   background-color: #f7f3f5;
 }
+
+.create-note-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}

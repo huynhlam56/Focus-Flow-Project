@@ -32,7 +32,7 @@ const NoteForm = ({onEditCreateSubmit, task, note, formType}) => {
   }
   return (
     <div>
-      <form onSubmit={handleSubmitNote}>
+      <form className='create-note-form' onSubmit={handleSubmitNote}>
         <textarea
           style={{width: '300px', height: '100px', border: 'solid 1px black', resize: "none"}}
           className="note-textarea"

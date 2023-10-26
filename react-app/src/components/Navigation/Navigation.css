@@ -24,16 +24,17 @@
   color: #f9f9f9;
   font-weight: bolder;
   letter-spacing: 10px;
-  font-size: 70px;
+  font-size: 100px;
   /* font-family: 'Style Script', cursive; */
   font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Agbalumo'; */
 }
 
 .tasks-profile-btn{
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .page-header {
@@ -41,13 +42,13 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 0px;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 .tasks-link{
   text-decoration: none;
   font-size: 16px;
-  background-color: #262220;
+  background-color: #654a4e;
   color: whitesmoke;
   border: 1px solid white;
   border-radius: 10px;
@@ -64,6 +65,11 @@
   background: none;
   font-size: 20px;
   cursor: pointer;
+  color: #654a4e;
+}
+
+.profile-btn:hover{
+  color: #413e3d;
 }
 
 .profile-dropdown.hidden {
@@ -78,7 +84,7 @@ ul.profile-dropdown{
   padding: 0px 10px ;
   position: absolute;
   right: 30px;
-  top: 108px;
+  top: 89px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,7 +94,7 @@ ul.profile-dropdown{
   height: 150px;
   width:fit-content;
   border-radius: 15px;
-  background-color: #97978d;
+  background-color: #d4ae9d;
   color: #262220;
 
 }
@@ -99,7 +105,7 @@ ul.profile-dropdown{
 
 .logout-btn{
   border: 1px solid #f7f1f0;
-  background-color: transparent;
+  background-color: #dcc2c2;
   border-radius: 10px;
   width: 100%;
   padding: 7px 0px;
@@ -109,7 +115,7 @@ ul.profile-dropdown{
 }
 
 .logout-btn:hover{
-  background-color: #555555;
+  background-color: #a07d7d;
 }
 
 .nav-bar {

@@ -5,20 +5,20 @@ import { deleteTaskThunk, fetchAllTasksThunk, updateTaskThunk } from "../../../s
 import OpenModalButton from "../../OpenModalButton";
 import SingleTask from "../SingleTask";
 import CreateTask from "../CreateTask";
-import { useHistory } from "react-router-dom";
 import Checkbox from '@mui/material/Checkbox';
 
 function AllTasks() {
   const dispatch = useDispatch()
-  const history = useHistory()
   const tasks = useSelector(state => state.tasks.Tasks)
   const user = useSelector(state => state.session.user)
   const [checked, setChecked] = useState(false);
   const [deleteTimer, setDeleteTimer] = useState(null);
 
+
   const bodyElement = document.body
   useEffect(() => {
-    bodyElement.style.backgroundColor = 'rgb(253 239 233)'
+    bodyElement.style.backgroundColor = '#e6ddde'
+    // bodyElement.style.backgroundImage = "url('https://www.desktopbackground.org/p/2013/12/05/680681_flower-backgrounds-for-powerpoint_1600x1200_h.jpg')";
     dispatch(fetchAllTasksThunk())
 
   },[dispatch])
@@ -98,10 +98,18 @@ function AllTasks() {
   return (
     <div>
       <div>
-        <h1 className="tasks-header">Your Goals For Today...</h1>
+        <h1 className="tasks-header">Your Goals For Today...
+          <div className="add-task-btn-container">
+            <OpenModalButton
+              buttonText='Add Task'
+              modalComponent={<CreateTask />}
+              styleClass='create-task-btn'
+            />
+          </div>
+        </h1>
       </div>
       <div className="tasks-index">
-        <h3 className="category-header">Personal</h3>
+        <h3 className="category-header-personal">Personal</h3>
         {personalTasks && personalTasks.map((task) => (
           <li className='task-list' key={task.id}>
           <Checkbox
@@ -117,7 +125,7 @@ function AllTasks() {
           </li>
         ))}
         <div>
-          <h3 className="category-header">Work</h3>
+          <h3 className="category-header-work">Work</h3>
           {workTasks && workTasks.map((task) => (
             <li className='task-list' key={task.id}>
               <OpenModalButton
@@ -129,7 +137,7 @@ function AllTasks() {
           ))}
         </div>
         <div>
-          <h3 className="category-header">School</h3>
+          <h3 className="category-header-school">School</h3>
           {schoolTasks && schoolTasks.map((task) => (
             <li className='task-list' key={task.id}>
               <OpenModalButton
@@ -139,13 +147,6 @@ function AllTasks() {
               />
             </li>
           ))}
-        </div>
-        <div className="add-task-btn-container">
-          <OpenModalButton
-            buttonText="Add Task"
-            modalComponent={<CreateTask />}
-            styleClass='create-task-btn'
-          />
         </div>
       </div>
     </div>

@@ -17,9 +17,12 @@ function Navigation({ isLoaded }){
 		e.preventDefault()
 		history.push('/tasks')
 	}
-
+  const bodyElement = document.body
 	if(sessionUser) {
 		document.getElementById("bg").style.display = "none";
+		bodyElement.style.backgroundImage = "url('https://static.vecteezy.com/system/resources/previews/016/902/306/original/abstract-hand-drawn-minimalist-background-vector.jpg')";
+		bodyElement.style.opacity = "1";
+		bodyElement.style.zIndex = "-1";
 	}else if ( document.getElementById("bg") !== null ) {
 		document.getElementById("bg").style.display = "";
 	}
@@ -234,14 +237,11 @@ function Navigation({ isLoaded }){
 	return (
 		<ul className='page-header'>
 			<h1 className='title-section'>
-				<NavLink className='title-task-index' exact to="/">Focus Flow</NavLink>
+				<h1 className='title-task-index'>Focus Flow</h1>
 				<img className='logo' src={logo}></img>
 			</h1>
 			<div className='tasks-profile-btn'>
 				<p>
-					{/* <NavLink className='tasks-link' exact to='/tasks'>
-						<FontAwesomeIcon icon={faListCheck} style={{ color: '#403234' }} />
-					</NavLink> */}
 					<button className='tasks-link' onClick={handleViewTasks}>View Tasks</button>
 				</p>
 				{isLoaded && (
