@@ -6,6 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import SingleTask from "../SingleTask";
 import CreateTask from "../CreateTask";
 import Checkbox from '@mui/material/Checkbox';
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function AllTasks() {
   const dispatch = useDispatch()
@@ -14,22 +15,21 @@ function AllTasks() {
   const [checked, setChecked] = useState(false);
   const [deleteTimer, setDeleteTimer] = useState(null);
 
+  const history = useHistory()
 
-  const bodyElement = document.body
+  // const bodyElement = document.body
   useEffect(() => {
-    bodyElement.style.backgroundColor = '#e6ddde'
+    // bodyElement.style.backgroundColor = '#e6ddde'
     // bodyElement.style.backgroundImage = "url('https://www.desktopbackground.org/p/2013/12/05/680681_flower-backgrounds-for-powerpoint_1600x1200_h.jpg')";
     dispatch(fetchAllTasksThunk())
 
   },[dispatch])
 
 
-  if(!user || Object.keys(user).length === 0) return (
-    <div>
-      <h3>Please log in to view tasks</h3>
-    </div>
-
-  )
+  if(!user || Object.keys(user).length === 0) {
+    history.push('/')
+    window.alert('Please log in to view tasks')
+  }
 
   const handleEditSubmit = async(e, task) => {
     e.preventDefault()

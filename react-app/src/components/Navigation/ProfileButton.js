@@ -36,10 +36,10 @@ function ProfileButton({ user }) {
 
   const handleLogout = async (e) => {
     e.preventDefault();
+    history.push('/')
     await dispatch(logout());
     bodyElement.style.backgroundImage ='none'
     bodyElement.style.backgroundColor = 'rgb(88, 88, 88)'
-    history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");

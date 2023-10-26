@@ -21,7 +21,7 @@ function Navigation({ isLoaded }){
 	if(sessionUser) {
 		document.getElementById("bg").style.display = "none";
 		bodyElement.style.backgroundImage = "url('https://static.vecteezy.com/system/resources/previews/016/902/306/original/abstract-hand-drawn-minimalist-background-vector.jpg')";
-		bodyElement.style.opacity = "1";
+
 		bodyElement.style.zIndex = "-1";
 	}else if ( document.getElementById("bg") !== null ) {
 		document.getElementById("bg").style.display = "";
@@ -128,7 +128,7 @@ function Navigation({ isLoaded }){
 		});
 
 		useEffect(() => {
-			// Settings for your background images and delay.
+
 			const settings = {
 				images: {
 					'images/palmtrees.jpg': 'center',

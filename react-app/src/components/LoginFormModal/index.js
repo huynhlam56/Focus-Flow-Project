@@ -47,11 +47,11 @@ function LoginFormModal() {
         <TextField size="small" id="outlined-basic" helperText={errors.email} error ={ errors.email } label="Email" variant="outlined" type="text" value={email} onChange={(e) => setEmail(e.target.value)}  />
         <TextField size="small" id="outlined-basic" helperText={errors.password} error ={ errors.password } label="Password" variant="outlined" type="password" value={password} onChange={(e) => setPassword(e.target.value)}  />
         {/* <button className='login-form-submit-button'>Log In</button> */}
-        <Button classes='login-form-submit-button' type="submit" variant="outlined">Log In</Button>
+        <Button style={{color: '#de6240', border: '1px solid #de6240'}} type="submit" variant="outlined">Log In</Button>
       </form>
       {/* <button className="demo-submit-button" onClick={handleDemoUserLogin}>Log In As DemoUser</button> */}
       <div className="demo-user-div">
-        <Button classes="demo-submit-button" type="submit" variant="outlined" onClick={handleDemoUserLogin}>Log In As Demo User</Button>
+        <Button style={{color: '#de6240', border: '1px solid #de6240', width: '228px'}} type="submit" variant="outlined" onClick={handleDemoUserLogin}>Log In As Demo User</Button>
       </div>
       <div className="no-acc-div">
         <p className="no-acc">Don't have an account?</p>
