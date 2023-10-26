@@ -1,5 +1,6 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
+import { IconButton } from '@mui/material';
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal

@@ -1,16 +1,16 @@
 .create-task-btn {
-  border: 1px solid #f7f1f0;
-  background-color: #403234;
-  border-radius: 10px;
+  border: 1px solid #2f2f2f;
+  background-color: #bacbd5;
+  border-radius: 50px;
   width: 100px;
   padding: 10px 10px;
-  color: #f7f3f5;
-  /* font-weight: bold; */
+  color: #3e3e3e;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .create-task-btn:hover{
-  background-color: #3b3b3b;
+  background-color: #96bbd0;
 }
 
 .body {
@@ -18,19 +18,37 @@
 }
 
 .tasks-header {
-  font-family: 'Dancing Script', cursive;
+  /* font-family: 'Dancing Script', cursive; */
+  /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Agbalumo';
   font-weight: 400;
   color: #013328;
   margin-bottom: 50px;
-  margin-top: 50px;
-  font-size: 40px;
+  margin-top: 70px;
+  font-size: 52px;
 }
 
-.category-header {
-  font-family: 'Style Script', cursive;
+.category-header-personal {
+  font-family: 'Playfair';
   font-size: 35px;
-  margin-bottom: 5px;
-  color: #793c2d;
+  margin: 15px 0px;
+  margin-top: 80px;
+  color: #E2632C;
+}
+.category-header-work {
+  font-family: 'Playfair';
+  font-size: 35px;
+  margin: 15px 0px;
+  margin-top: 100px;
+  color: #7abe83;
+}
+
+.category-header-school {
+  font-family: 'Playfair';
+  font-size: 35px;
+  margin: 15px 0px;
+  margin-top: 100px;
+  color: #8992e9;
 }
 
 .task-btn{
@@ -39,10 +57,11 @@
   font-size: 20px;
   cursor: pointer;
   /* color: #54494b; */
-  color:#403234 ;
-  font-family: 'Shadows Into Light', cursive;
+  color:#000000 ;
+  /* font-family: 'Montserrat', sans-serif; */
   /* font-family: 'Times New Roman', Times, serif; */
-  /* font-family: ui-monospace; */
+  /* font-family: 'Raleway', sans-serif; */
+  font-family: 'Syne';
   font-weight: lighter;
   font-size: 30px;
 }
@@ -50,8 +69,23 @@
 .task-list {
   list-style: circle;
   font-size: 25px;
+  border-bottom: 1px solid #6d6c6c;
+  padding: 10px 0px;
 }
 
-.add-task-btn-container{
+/* .add-task-btn-container{
   padding-top: 40px;
+} */
+
+.title-task-index{
+  text-decoration: none;
+  cursor: pointer;
+  color: #654a4e;
+  font-weight: bolder;
+  letter-spacing: 10px;
+  font-size: 70px;
+  /* font-family: 'Style Script', cursive; */
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Agbalumo'; */
+  margin-top: 0px;
 }

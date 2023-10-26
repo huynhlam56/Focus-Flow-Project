@@ -1,18 +1,40 @@
 .note-container{
   width: 300px;
   padding: 15px 10px;
+  /* display: flex;
+  flex-direction: row;
+  align-items: baseline; */
+  /* gap: 20px; */
 }
 
 .note-header{
-  color: #f8b1a1;
+  color: #fa8c74;
   text-decoration: underline;
+  margin-bottom: 10px;
 }
 
 .note{
-  color: #f7f3f5;
-  overflow-wrap: break-word;
+  color: #636363;
+  overflow-wrap: anywhere;
+  margin: 0px;
 }
 
 /* #textarea{
   max-width: 80%;
 } */
+
+.delete-btn{
+  background-color: transparent;
+  border: none;
+  color: gray;
+}
+
+.edit-delete{
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.task-edit-delete-btns{
+
+}

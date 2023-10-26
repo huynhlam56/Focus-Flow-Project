@@ -7,6 +7,11 @@ import DeleteNoteModal from "../DeleteNote";
 import NoteForm from "../NoteForm";
 import './ShowNotes.css'
 import '../CreateNote/CreateNote.css'
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import CreateIcon from '@mui/icons-material/Create';
+import { IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 const ShowNote = ({task}) => {
@@ -37,12 +42,15 @@ const ShowNote = ({task}) => {
   if (!note || Object.keys(note).length === 0) {
     return (
       <div className="note-container">
-        <h4 className="note-header">NOTE:</h4>
+        <h4 className="note-header">NOTE </h4>
         <div>
           {isEditing ?
-          <NoteForm onEditCreateSubmit={handleCreateSubmit} task={task} note={note} formType='create' />
+          <NoteForm style={{color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}} onEditCreateSubmit={handleCreateSubmit} task={task} note={note} formType='create' />
           :
-          <button className='add-note-btn' type="button" onClick={handleCreateButton}>Add Note</button>
+          // <button className='add-note-btn' type="button" onClick={handleCreateButton}>Add Note</button>
+          <IconButton  style={{fontSize: '15px', color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}}  onClick={handleCreateButton} color="primary" aria-label="edit">
+             <CreateIcon /> Add Note
+          </IconButton>
           }
         </div>
       </div>
@@ -51,17 +59,22 @@ const ShowNote = ({task}) => {
 
   return (
     <div className="note-container">
-      <h4 className="note-header">NOTE:</h4>
+      <h4 className="note-header">NOTE: </h4>
       {isEditing ? <NoteForm onEditCreateSubmit={handleEditSubmit} task={task} note={note} formType="edit"/> :
         <div>
-          <p className="note">{note.note}</p>
           <div className="edit-delete-btn-container">
-            <button className='edit-delete-btn'type="button" onClick={handleEditButton}>Edit</button>
-            <OpenModalButton
-              buttonText='Delete'
-              modalComponent={<DeleteNoteModal noteId={note.id} taskId={task.id}/>}
-              styleClass='edit-delete-btn'
-            />
+          <p className="note">{note.note}</p>
+            {/* <button className='edit-delete-btn'type="button" onClick={handleEditButton}>Edit</button> */}
+            <div className="edit-delete">
+              <IconButton style={{fontSize: '30px', color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}}  onClick={handleEditButton} color="primary" aria-label="edit">
+                <EditNoteIcon style={{fontSize: '30px', padding: '0px'}}/>
+              </IconButton>
+              <OpenModalButton
+                buttonText={<DeleteIcon />}
+                modalComponent={<DeleteNoteModal noteId={note.id} taskId={task.id}/>}
+                styleClass='delete-btn'
+              />
+            </div>
           </div>
         </div>
       }
