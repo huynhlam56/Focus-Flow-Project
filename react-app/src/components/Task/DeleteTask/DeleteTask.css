@@ -7,13 +7,12 @@
 }
 
 .confirm-delete{
-  background-color: transparent;
+  background-color: #fa8c74;
   border: 1px white solid;
   border-radius: 10px;
   width: 100px;
   color: white;
   cursor: pointer;
-
 }
 
 .confirm-delete:hover{
@@ -26,7 +25,7 @@
 }
 
 .delete-header{
-  color: #f6e7e5;
+  color: #f18870;
   padding: 0px 10px;
   text-align: center;
 }

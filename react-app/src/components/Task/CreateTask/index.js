@@ -51,27 +51,7 @@ function CreateTask() {
   return (
     <div className="task-form-container">
       <form className='task-form' onSubmit={handleSubmit}>
-        {/* <label className="labels">
-          Task:
-          <input
-            className="task-name-input"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        {errors && errors.name && <p id='error-msg'>*{errors.name}</p>}
-        </label> */}
         <TextField id="standard-basic" error={errors.name} helperText={errors.name} label="Task" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        {/* <label className="labels">
-          Category:
-          <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-            <option value='Personal'>Personal</option>
-            <option value='Work'>Work</option>
-            <option value='School'>School</option>
-          </select>
-        {errors && errors.category && <p id='error-msg'>*{errors.category}</p>}
-        </label> */}
         <RadioGroup
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
@@ -85,14 +65,6 @@ function CreateTask() {
           <FormControlLabel value="Work" control={<Radio />} label="Work" />
           <FormControlLabel value="School" control={<Radio />} label="School" />
         </RadioGroup>
-        {/* <label className="labels">
-          Priority:
-          <select value={priority} onChange={(e) => setPriority(e.target.value)} required>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-        {errors && errors.priority && <p id='error-msg'>*{errors.priority}</p>}
-        </label> */}
         <FormControlLabel
           value={priority}
           control={<Checkbox style={{color: '#fa8c74'}} checked={priority} />}
@@ -101,15 +73,6 @@ function CreateTask() {
           error={errors.priority}
           helperText={errors.priority}
         />
-        {/* <label className="labels">
-          Status:
-          <select value={status} onChange={(e) => setStatus(e.target.value)} required>
-            <option value='Not Started'>Not Started</option>
-            <option value='In Progress'>In Progress</option>
-            <option value='Incomplete'>Incomplete</option>
-          </select>
-        {errors && errors.status && <p id='error-msg'>*{errors.status}</p>}
-        </label> */}
         <FormControl id='demo-select-div' variant="standard" sx={{ m: 1, minWidth: 120, color: '#fa8c74' }}>
           <InputLabel id="demo-simple-select-label">Status:</InputLabel>
           <Select
@@ -127,29 +90,6 @@ function CreateTask() {
             <MenuItem value='Incomplete'>Incomplete</MenuItem>
           </Select>
         </FormControl>
-        {/* <label className="label-deadline">
-          <ScheduleIcon style={{fontSize: '32px', color: '#fa8c74'}} />
-          <select className='time' value={deadline} onChange={(e) => setDeadline(e.target.value)} required>
-            <option value='12:00'>12:00</option>
-            <option value='01:00'>01:00</option>g
-            <option value='02:00'>02:00</option>
-            <option value='03:00'>03:00</option>
-            <option value='04:00'>04:00</option>
-            <option value='05:00'>05:00</option>
-            <option value='06:00'>06:00</option>
-            <option value='07:00'>07:00</option>
-            <option value='08:00'>08:00</option>
-            <option value='09:00'>09:00</option>
-            <option value='10:00'>10:00</option>
-            <option value='11:00'>11:00</option>
-          </select>
-        {errors && errors.deadline && <p id='error-msg'>*{errors.deadline}</p>}
-          <select className='time' value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)} required>
-            <option value='AM'>AM</option>
-            <option value='PM'>PM</option>
-          </select>
-        {errors && errors.timePeriod && <p id='error-msg'>*{errors.timePeriod}</p>}
-        </label> */}
         <FormControl id='time-select-div' variant="standard" style={{color:'gray', width:'fit-content', display: 'inline-flex', flexDirection:'row', gap: '10px'}} >
           <InputLabel id="time-select-label"></InputLabel>
           <ScheduleIcon style={{fontSize: '32px', color: '#fa8c74'}} />

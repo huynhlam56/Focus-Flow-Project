@@ -1,6 +1,10 @@
 .note-container{
   width: 300px;
   padding: 15px 10px;
+  /* display: flex;
+  flex-direction: row;
+  align-items: baseline; */
+  /* gap: 20px; */
 }
 
 .note-header{
@@ -11,10 +15,26 @@
 
 .note{
   color: #636363;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   margin: 0px;
 }
 
 /* #textarea{
   max-width: 80%;
 } */
+
+.delete-btn{
+  background-color: transparent;
+  border: none;
+  color: gray;
+}
+
+.edit-delete{
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.task-edit-delete-btns{
+
+}
