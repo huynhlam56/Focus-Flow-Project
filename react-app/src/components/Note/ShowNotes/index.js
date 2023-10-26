@@ -48,8 +48,8 @@ const ShowNote = ({task}) => {
           <NoteForm style={{color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}} onEditCreateSubmit={handleCreateSubmit} task={task} note={note} formType='create' />
           :
           // <button className='add-note-btn' type="button" onClick={handleCreateButton}>Add Note</button>
-          <IconButton style={{color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}}  onClick={handleCreateButton} color="primary" aria-label="edit">
-            <CreateIcon />
+          <IconButton  style={{fontSize: '15px', color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}}  onClick={handleCreateButton} color="primary" aria-label="edit">
+             <CreateIcon /> Add Note
           </IconButton>
           }
         </div>

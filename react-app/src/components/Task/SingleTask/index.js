@@ -178,7 +178,7 @@ function SingleTask({task, onEditCreateSubmit}) {
                 <EditNoteIcon style={{fontSize: '25px', padding: '0px'}}/>
               </IconButton>
               <OpenModalButton
-                buttonText={<DeleteIcon style={{fontSize: '20px'}}/>}
+                buttonText={<DeleteIcon style={{fontSize: '20px', cursor: 'pointer'}}/>}
                 modalComponent={<DeleteTaskModal taskId={task.id}/>}
                 styleClass='delete-btn'
               />
