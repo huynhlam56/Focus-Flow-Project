@@ -47,7 +47,7 @@ function SignupFormModal() {
 				<TextField size="small" id="outlined-basic" helperText={errors.password} error ={ errors.password } label="Password" variant="outlined" type="password" value={password} onChange={(e) => setPassword(e.target.value)}  />
 				<TextField size="small" id="outlined-basic" helperText={errors.confirmPassword} error ={ errors.confirmPassword } label="Confirm Password" variant="outlined" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}  />
 				{/* <button className='signup-form-submit-btn' type="submit">Create Account</button> */}
-				<Button style={{color: '#de6240', border: '1px solid #de6240'}}type="submit" variant="outlined">Create Account</Button>
+				<Button style={{color: 'hsl(0deg 100% 98.91%)', border: '1px solid rgb(244 237 237', backgroundColor:'rgb(144 65 0 / 92%)'}} type="submit" variant="outlined">Create Account</Button>
 			</form>
 		</div>
 	);

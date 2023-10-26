@@ -8,10 +8,10 @@
 
 .login-modal-div{
   align-items: center;
-  background-color: white;
+  background-color: #f1eeeb;
   border-radius: 10px;
   width: 250px;
-  border: 2px solid rgb(246, 214, 159);
+  border: 2px solid rgb(131 63 4);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -68,4 +68,11 @@
   border: none;
   background-color: transparent;
   text-decoration: underline;
+}
+
+#modal-content{
+  background-color: #ffffff;
+  border: 2px solid #f2efec;
+  border-radius: 10px;
+  margin: 10px;
 }

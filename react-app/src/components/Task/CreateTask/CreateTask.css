@@ -10,14 +10,14 @@
 
 #modal-content {
   background-color: #ffffff;
-  border: 2px solid #f5a365;
+  border: 1px solid #f9f8f7;
   border-radius: 10px;
   margin: 10px
 }
 
 .task-form-container{
   margin: 10px;
-  width: 100%;
+  border: 2px solid rgb(131 63 4);
 }
 
 .labels {
