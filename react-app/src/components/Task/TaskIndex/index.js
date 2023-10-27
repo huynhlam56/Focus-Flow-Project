@@ -58,7 +58,7 @@ function AllTasks() {
         await dispatch(deleteTaskThunk(taskId))
         dispatch(fetchAllTasksThunk())
         console.log('Task deleted!');
-      }, 2000);
+      }, 4000);
 
       //prevTimer = previous state of the timer bc deleteTimer is an obj that stores timer for tasks and setDeletetimer is a function that updates deleteTimer
       setDeleteTimer((prevTimer) => ({
