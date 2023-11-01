@@ -115,7 +115,6 @@ export const createTaskThunk =(task) => async dispatch => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(task)
   })
-  console.log('RESPONSE', response)
   if (response.ok) {
     const newTask = await response.json()
     dispatch(createTask(newTask))
@@ -232,7 +231,6 @@ const taskReducer = (state = initialState, action) => {
       return newState
     case CREATE_NOTE:
       const newNote = action.payload.note
-      console.log('NEW NOTE', newNote)
       newState = {...state, Tasks: {...state.Tasks, [action.payload.taskId]: {...state.Tasks[action.payload.taskId], Note: newNote}}}
       return newState
     case DELETE_NOTE:

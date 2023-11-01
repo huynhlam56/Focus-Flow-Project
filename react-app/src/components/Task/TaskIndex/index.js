@@ -16,7 +16,6 @@ import moment from 'moment'
 function AllTasks() {
   const dispatch = useDispatch()
   const tasks = useSelector(state => state.tasks.Tasks)
-  console.log(tasks, 'TASKS')
   const user = useSelector(state => state.session.user)
   const [checked, setChecked] = useState({});
   const [deleteTimer, setDeleteTimer] = useState({});
@@ -32,24 +31,19 @@ function AllTasks() {
   },[dispatch])
 
 
-  if(!user || Object.keys(user).length === 0) {
-    history.push('/')
-    window.alert('Please log in to view tasks')
-  }
 
   const handleEditSubmit = async(e, task) => {
     e.preventDefault()
-   dispatch(updateTaskThunk(task, task.id))
+    dispatch(updateTaskThunk(task, task.id))
   }
 
 
   const handleChange = (event) => {
     const isChecked = event.target.checked;
 
-     const taskId = event.target.id
+    const taskId = event.target.id
     // If the task is being marked as completed, set a timer to delete it in 4 seconds
     if (isChecked) {
-      console.log('I AM IN HERE')
       setChecked((prevChecked) => ({
         ...prevChecked
         [taskId] = true
@@ -57,7 +51,6 @@ function AllTasks() {
       const timer = setTimeout(async() => {
         await dispatch(deleteTaskThunk(taskId))
         dispatch(fetchAllTasksThunk())
-        console.log('Task deleted!');
       }, 4000);
 
       //prevTimer = previous state of the timer bc deleteTimer is an obj that stores timer for tasks and setDeletetimer is a function that updates deleteTimer
@@ -68,12 +61,10 @@ function AllTasks() {
         [taskId]: timer,
       }));
     } else {
-      console.log('I AM IN HERE ELSE STATEMENT')
       setChecked((prevChecked) => ({
         ...prevChecked
         [taskId] = false
       }))
-      console.log(checked, 'CHECKED')
       // If the user unchecks the box within 4 seconds, clear the deletion timer
       //if there is a timer on the task and is not undefined
       if (deleteTimer[taskId]) {
@@ -97,7 +88,7 @@ function AllTasks() {
         buttonText="Add Task"
         modalComponent={<CreateTask />}
         styleClass='create-task-btn'
-      />
+        />
     </div>
   )
   const allTasks = Object.values(tasks)
@@ -108,6 +99,10 @@ function AllTasks() {
 
   const localizer = momentLocalizer(moment)
 
+  if(!user || Object.keys(user).length === 0) {
+    history.push('/')
+    window.alert('Please log in to view tasks')
+  }
   return (
     <div className="tasks-page">
       <div>

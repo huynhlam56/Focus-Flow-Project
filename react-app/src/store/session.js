@@ -81,7 +81,6 @@ export const signUp = (username, email, firstName, lastName, password) => async 
 			password,
 		}),
 	});
-	console.log(response, 'RESPONSE HERE')
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(setUser(data));
@@ -89,7 +88,6 @@ export const signUp = (username, email, firstName, lastName, password) => async 
 	} else if (response.status < 500) {
 		const data = await response.json();
 		if (data.errors) {
-			console.log(data, 'DATA')
 			return data.errors;
 		}
 	} else {
