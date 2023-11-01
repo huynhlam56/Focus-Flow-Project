@@ -16,4 +16,4 @@ class EventForm(FlaskForm):
   zip_code = StringField('zip code', validators=[validate_zip_code])
   time = StringField('time', validators=[DataRequired()])
   date = StringField('date', validators=[DataRequired()])
-  
+
