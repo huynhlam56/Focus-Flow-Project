@@ -11,6 +11,7 @@ from .seeds import seed_commands
 from .config import Config
 from .api.task_routes import task_routes
 from .api.note_routes import note_routes
+# from .api.event_routes import event_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -32,6 +33,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(task_routes, url_prefix='/api/tasks')
 app.register_blueprint(note_routes, url_prefix='/api/notes')
+# app.register_blueprint(event_routes, url_prefix='/api/events')
 db.init_app(app)
 Migrate(app, db)
 
