@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, ValidationError, Length, NumberRang
 
 
 def validate_zip_code(form, field):
-  if not (field.data.isDigit() and len(field.data) == 5):
+  if not (field.data.isdigit() and len(field.data) == 5):
     raise ValidationError('ZIP code must be 5 digits')
 
 class EventForm(FlaskForm):
