@@ -1,20 +1,22 @@
-import React, { useEffect, useState, useMemo, Fragment } from "react";
-import PropTypes from 'prop-types'
+import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './EventIndex.css'
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './react-big-calendar.css';
 import { Calendar, momentLocalizer, Views, DateLocalizer } from 'react-big-calendar'
 import moment from 'moment'
-import OpenModalButton from "../../OpenModalButton";
 import { fetchAllEventsThunk } from "../../../store/event";
 import * as dates from '../../../utils/dates'
+import SingleEvent from "../SingleEvent";
+import { useModal } from "../../../context/Modal";
 
 
 function AllEvents() {
   const dispatch = useDispatch()
   const events = useSelector(state => state.events?.Events)
-  console.log(events, 'EVENTS')
   const user = useSelector(state => state.session.user)
+  // const [selectedEvent, setSelectedEvent] = useState(null)
+  const { closeModal } = useModal()
+  const {setModalContent} = useModal()
 
 
   const eventData = events ? Object.values(events)?.map(event => {
@@ -36,14 +38,16 @@ function AllEvents() {
     }
   }) : []
 
+  console.log(eventData, 'EVENTDATA')
   useEffect(() => {
-    console.log('RUNNING')
     dispatch(fetchAllEventsThunk())
   }, [dispatch])
 
+  const handleSelectEvent = (event, e) => {
+    setModalContent(<SingleEvent event={event}/>)
+  }
 
-
-  const defaultDate = new Date(2023, 10, 1)
+  const defaultDate = new Date()
   const views = Object.keys(Views).map((k) => Views[k])
 
   //calling momentLocalizer(moment) to configure the localizer for the calendar component, specifying that it should use the moment library for date localizer
@@ -60,13 +64,11 @@ function AllEvents() {
           views={views}
           showMultiDayTimes
           style={{ height: 600 }}
+          onSelectEvent={handleSelectEvent}
         />
       </div>
     </Fragment>
   )
-}
-AllEvents.propTypes = {
-  localizer: PropTypes.instanceOf(DateLocalizer)
 }
 
 export default AllEvents;
