@@ -65,11 +65,11 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-off-range {
-  color: #999999;
+  color: #e9e9e9;
 }
 
 .rbc-off-range-bg {
-  background: #e6e6e6;
+  background: transparent;
 }
 
 .rbc-header {
@@ -249,22 +249,23 @@ button.rbc-input::-moz-focus-inner {
           box-shadow: none;
   margin: 0;
   padding: 2px 5px;
-  background-color: #3174ad;
+  background-color: #8e5535;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   width: 100%;
   text-align: left;
 }
+
 .rbc-slot-selecting .rbc-event, .rbc-slot-selecting .rbc-day-slot .rbc-background-event, .rbc-day-slot .rbc-slot-selecting .rbc-background-event {
   cursor: inherit;
   pointer-events: none;
 }
 .rbc-event.rbc-selected, .rbc-day-slot .rbc-selected.rbc-background-event {
-  background-color: #265985;
+  background-color: #4f2207;
 }
 .rbc-event:focus, .rbc-day-slot .rbc-background-event:focus {
-  outline: 5px auto #3b99fc;
+  outline: 5px auto #8e5535;
 }
 
 .rbc-event-label {

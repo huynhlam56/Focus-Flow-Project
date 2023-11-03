@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllTasks from "./components/Task/TaskIndex"
+import AllEvents from "./components/Event/EventIndex"
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/tasks" >
             <AllTasks />
+          </Route>
+          <Route path="/events" >
+            <AllEvents />
           </Route>
         </Switch>
       )}

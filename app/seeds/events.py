@@ -18,7 +18,7 @@ def seed_events():
       country='US',
       zip_code=fake.zipcode(),
       time='10:30 AM',
-      date='November 4, 2023',
+      date='11-04-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -31,7 +31,7 @@ def seed_events():
       country='US',
       zip_code='1234',
       time='5:00 PM',
-      date='November 5, 2023',
+      date='11-05-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -44,7 +44,7 @@ def seed_events():
       country='US',
       zip_code='1234',
       time='10:30 AM',
-      date='December 4, 2023',
+      date='12-04-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -57,7 +57,7 @@ def seed_events():
       country='US',
       zip_code='5345',
       time='10:30 AM',
-      date='November 7, 2023',
+      date='11-07-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -70,7 +70,7 @@ def seed_events():
       country='US',
       zip_code='1234',
       time='10:30 AM',
-      date='November 10, 2023',
+      date='11-10-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -83,7 +83,7 @@ def seed_events():
       country='US',
       zip_code='1234',
       time='10:30 AM',
-      date='November 4, 2023',
+      date='11-04-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -96,7 +96,7 @@ def seed_events():
       country='US',
       zip_code='1234',
       time='5:00 PM',
-      date='November 5, 2023',
+      date='11-05-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -109,7 +109,7 @@ def seed_events():
       country='US',
       zip_code='92183',
       time='8:00 AM',
-      date='November 7, 2023',
+      date='11-07-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -122,7 +122,7 @@ def seed_events():
       country='US',
       zip_code='93104',
       time='5:00 PM',
-      date='November 11, 2023',
+      date='11-11-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -135,7 +135,7 @@ def seed_events():
       country='US',
       zip_code='12345',
       time='6:00 PM',
-      date='November 12, 2023',
+      date='11-12-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -148,7 +148,7 @@ def seed_events():
       country='US',
       zip_code='1234',
       time='5:00 PM',
-      date='November 5, 2023',
+      date='11-05-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -161,7 +161,7 @@ def seed_events():
       country='US',
       zip_code=fake.zipcode(),
       time='10:30 AM',
-      date='November 4, 2023',
+      date='11-04-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -174,7 +174,7 @@ def seed_events():
       country='US',
       zip_code='12345',
       time='6:00 PM',
-      date='November 12, 2023',
+      date='11-12-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -187,7 +187,7 @@ def seed_events():
       country='US',
       zip_code='12345',
       time='6:00 PM',
-      date='November 12, 2023',
+      date='11-12-2023',
       created_at=current_date,
       updated_at=current_date
     ),
@@ -200,7 +200,7 @@ def seed_events():
       country='US',
       zip_code='12345',
       time='1:00 PM',
-      date='November 9, 2023',
+      date='11-09-2023',
       created_at=current_date,
       updated_at=current_date
     ),

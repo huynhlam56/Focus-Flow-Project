@@ -33,11 +33,13 @@ export const deleteEvent = (eventId) => ({
 
 /* THUNKS */
 
-// GET TASKS
+// GET EVENTS
 export const fetchAllEventsThunk = () => async dispatch => {
   const response = await fetch('/api/events/')
+  console.log(response, 'RESPONSE FROM BACKEND ')
   if (response.ok) {
     const data = await response.json()
+    console.log(data, 'DATA BACK')
     dispatch(loadEvents(data))
     return data
   }else {
@@ -46,7 +48,7 @@ export const fetchAllEventsThunk = () => async dispatch => {
   }
 }
 
-// GET SINGLE TASK
+// GET SINGLE EVENT
 export const fetchSingleEventThunk = (eventId) => async dispatch => {
   const response = await fetch(`/api/events/${eventId}`)
   if(response.ok){
@@ -124,6 +126,7 @@ const eventReducer = (state = initialState, action) => {
     case CREATE_EVENT:
       const newEvent = action.payload.event
       newState = {...state, Events: {...state.Events, [newEvent.id]: {...newEvent}}}
+      return newState
     case DELETE_EVENT:
       newState = {...state}
       delete newState[action.eventId]
