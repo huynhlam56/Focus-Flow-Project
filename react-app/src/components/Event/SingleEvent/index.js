@@ -3,12 +3,11 @@ import './SingleEvent.css'
 import OpenModalButton from "../../OpenModalButton"
 import { useModal } from "../../../context/Modal"
 import { TextField } from "@mui/material"
-import Select from "@mui/material"
 
 function SingleEvent({event, onEditCreateSubmit}) {
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState(event.title)
-  const [date, setDate] = useState(event.date)
+  const [date, setDate] = useState(event.start.toLocaleString().split(','))
   const [time, setTime] = useState(event.time)
   const [address, setAddress] = useState(event.address)
   const [city, setCity] = useState(event.city)
@@ -55,7 +54,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
     e.preventDefault()
     setIsEditing(false)
     setErrors({})
-    setName(editedEvent.title)
+    setName(editedEvent.name)
     setDate(editedEvent.date)
     // setTime(editedEvent.time)
     setAddress(editedEvent.address)
@@ -82,7 +81,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
       ) : (
       <div>
         <h3>{event.title}</h3>
-        {/* <p>{event.date}</p> */}
+        <p><b>Date:</b> {date[0].trim()}</p>
         {/* <p>{event.time}</p> */}
         <p><b>Address:</b> {event.address} {event.city}, {event.state} {event.zipCode} </p>
         <div>
