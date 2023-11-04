@@ -4,7 +4,7 @@ import './EventIndex.css'
 import './react-big-calendar.css';
 import { Calendar, momentLocalizer, Views, DateLocalizer } from 'react-big-calendar'
 import moment from 'moment'
-import { fetchAllEventsThunk } from "../../../store/event";
+import { fetchAllEventsThunk, updateEventThunk } from "../../../store/event";
 import * as dates from '../../../utils/dates'
 import SingleEvent from "../SingleEvent";
 import { useModal } from "../../../context/Modal";
@@ -43,8 +43,13 @@ function AllEvents() {
     dispatch(fetchAllEventsThunk())
   }, [dispatch])
 
+  const handleEditSubmit = async(e, event) => {
+    e.preventDefault()
+    dispatch(updateEventThunk(event, event.id))
+  }
+
   const handleSelectEvent = (event, e) => {
-    setModalContent(<SingleEvent event={event}/>)
+    setModalContent(<SingleEvent event={event} onEditCreateSubmit={handleEditSubmit}/>)
   }
 
   const defaultDate = new Date()

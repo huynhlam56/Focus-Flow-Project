@@ -2,10 +2,12 @@ import React, { useState } from "react"
 import './SingleEvent.css'
 import OpenModalButton from "../../OpenModalButton"
 import { useModal } from "../../../context/Modal"
+import { TextField } from "@mui/material"
+import Select from "@mui/material"
 
 function SingleEvent({event, onEditCreateSubmit}) {
   const [isEditing, setIsEditing] = useState(false)
-  const [name, setName] = useState(event.name)
+  const [name, setName] = useState(event.title)
   const [date, setDate] = useState(event.date)
   const [time, setTime] = useState(event.time)
   const [address, setAddress] = useState(event.address)
@@ -53,7 +55,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
     e.preventDefault()
     setIsEditing(false)
     setErrors({})
-    setName(editedEvent.name)
+    setName(editedEvent.title)
     setDate(editedEvent.date)
     // setTime(editedEvent.time)
     setAddress(editedEvent.address)
@@ -69,17 +71,25 @@ function SingleEvent({event, onEditCreateSubmit}) {
 
   return (
     <div>
-      {/* {isEditing ? (
+      {isEditing ? (
         <form onSubmit={handleSubmitButton}>
-          <TextField id="standard-basic" error={errors.name} helperText={errors.name} label="Task" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <TextField id="standard-basic" error={errors.name} helperText={errors.name} label="Event" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <div className="add-cancel-btn-container">
+            <button className='save-cancel-task-btn' type='submit' onSubmit={handleSubmitButton}>Save</button>
+            <button className='save-cancel-task-btn' type='button' onClick={handleCancelEditButton}>Cancel</button>
+          </div>
         </form>
-      )} */}
+      ) : (
       <div>
         <h3>{event.title}</h3>
         {/* <p>{event.date}</p> */}
         {/* <p>{event.time}</p> */}
         <p><b>Address:</b> {event.address} {event.city}, {event.state} {event.zipCode} </p>
+        <div>
+          <button onClick={handleEditButton}>Edit</button>
+        </div>
       </div>
+      )}
     </div>
   )
 }
