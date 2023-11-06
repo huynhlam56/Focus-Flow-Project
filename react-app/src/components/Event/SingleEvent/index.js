@@ -3,11 +3,22 @@ import './SingleEvent.css'
 import OpenModalButton from "../../OpenModalButton"
 import { useModal } from "../../../context/Modal"
 import { TextField } from "@mui/material"
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs'
+import { DatePicker } from "@mui/x-date-pickers"
+import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteEventModal from "../DeleteEvent"
+import EditNoteIcon from '@mui/icons-material/EditNote';
+import { IconButton } from "@mui/material";
+
 
 function SingleEvent({event, onEditCreateSubmit}) {
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState(event.title)
-  const [date, setDate] = useState(event.start.toLocaleString().split(','))
+  const [date, setDate] = useState(event.date)
+  console.log(typeof date, 'DATEEEE')
   const [time, setTime] = useState(event.time)
   const [address, setAddress] = useState(event.address)
   const [city, setCity] = useState(event.city)
@@ -25,54 +36,75 @@ function SingleEvent({event, onEditCreateSubmit}) {
     e.preventDefault()
 
     setName(event.name)
-    setDate(event.date)
-    // setTime(event.time)
+    setDate(date)
+    setTime(time)
     setAddress(event.address)
     setCity(event.city)
     setState(event.state)
     setCountry(event.country)
     setZipCode(event.zipCode)
-
     setIsEditing(false)
   }
 
   const handleSubmitButton = async(e) => {
     e.preventDefault()
-
-    const editedEvent = {
-      id: event.id,
-      name,
-      date,
-      // time,
-      address,
-      city,
-      state,
-      country,
-      zipCode
-    }
-    await onEditCreateSubmit(e, editedEvent)
-    e.preventDefault()
-    setIsEditing(false)
-    setErrors({})
-    setName(editedEvent.name)
-    setDate(editedEvent.date)
-    // setTime(editedEvent.time)
-    setAddress(editedEvent.address)
-    setCity(editedEvent.city)
-    setState(editedEvent.state)
-    setCountry(editedEvent.country)
-    setZipCode(editedEvent.zipCode)
-
-    closeModal()
+    try {
+      const editedEvent = {
+        id: event.id,
+        name,
+        date,
+        time,
+        address,
+        city,
+        state,
+        country,
+        zipCode
+      }
+      await onEditCreateSubmit(e, editedEvent)
+      e.preventDefault()
+      setIsEditing(false)
+      setErrors({})
+      setName(editedEvent.name)
+      setDate(editedEvent.date)
+      setTime(editedEvent.time)
+      setAddress(editedEvent.address)
+      setCity(editedEvent.city)
+      setState(editedEvent.state)
+      setCountry(editedEvent.country)
+      setZipCode(editedEvent.zipCode)
+      console.log(zipCode, 'INSIDE OF HANDLE')
+        // closeModal()
+      }catch(errors) {
+        setErrors(errors.errors)
+        return
+      }
+    // closeModal()
   }
+  console.log(zipCode, 'OUTSIDE OF HANDLE')
+
 
   if(!event || Object.keys(event) === 0) return null
 
   return (
-    <div>
+    <div className="edit-event-container">
       {isEditing ? (
-        <form onSubmit={handleSubmitButton}>
-          <TextField id="standard-basic" error={errors.name} helperText={errors.name} label="Event" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <form className='event-form' onSubmit={handleSubmitButton}>
+          <TextField style={{paddingTop:'15px'}} id="standard-basic" error={errors.name} helperText={errors.name} label="Event:" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <TextField id="labels" error={errors.address} helperText={errors.address} label="Address" variant="standard" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+          <TextField id="labels" error={errors.city} helperText={errors.city} label="City" variant="standard" type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+          <TextField id="labels" inputProps={{ maxLength: 2 }} error={errors.state} helperText={errors.state} label="State" variant="standard" type="text" value={state} onChange={(e) => setState(e.target.value)} />
+          <TextField id="labels" inputProps={{ maxLength: 2 }} error={errors.country} helperText={errors.components} label="Country" variant="standard" type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
+          <TextField id="labels" inputProps={{ maxLength: 5}} error={errors.zip_code} helperText={errors.zip_code} label="ZipCode" variant="standard" type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
+          {/* <LocalizationProvider  dateAdapter={AdapterDayjs}>
+            <DemoContainer components={['DatePicker']}>
+              <DatePicker
+                value={date.format('YYYY-MM-DD')}
+                onChange={e => setDate(dayjs(e))}
+                label={date.format('MM-DD-YYYY')}
+                onError={errors.date}
+              />
+            </DemoContainer>
+          </LocalizationProvider> */}
           <div className="add-cancel-btn-container">
             <button className='save-cancel-task-btn' type='submit' onSubmit={handleSubmitButton}>Save</button>
             <button className='save-cancel-task-btn' type='button' onClick={handleCancelEditButton}>Cancel</button>
@@ -80,12 +112,21 @@ function SingleEvent({event, onEditCreateSubmit}) {
         </form>
       ) : (
       <div>
-        <h3>{event.title}</h3>
-        <p><b>Date:</b> {date[0].trim()}</p>
-        {/* <p>{event.time}</p> */}
-        <p><b>Address:</b> {event.address} {event.city}, {event.state} {event.zipCode} </p>
-        <div>
-          <button onClick={handleEditButton}>Edit</button>
+        <div className="single-event-container">
+          <h3 className="event-title">{event.title}</h3>
+          <p className="event-fields"><b className="fields-label">Date:</b> {date}</p>
+          <p className="event-fields"><b className="fields-label">Time:</b>{time}</p>
+          <p className="event-fields"><b className="fields-label">Address:</b> {address} {city}, {state} {zipCode} </p>
+        </div>
+        <div className="edit-delete-btns">
+        <IconButton style={{fontSize: '20px', color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}}  onClick={handleEditButton} color="primary" aria-label="edit">
+          <EditNoteIcon style={{fontSize: '40px', padding: '0px'}}/>
+        </IconButton>
+          <OpenModalButton
+            buttonText={<DeleteIcon style={{fontSize: '30px', cursor: 'pointer'}}/>}
+            modalComponent={<DeleteEventModal eventId={event.id}/>}
+            styleClass='delete-btn'
+          />
         </div>
       </div>
       )}

@@ -9,8 +9,6 @@ import CreateTask from "../CreateTask";
 import Checkbox from '@mui/material/Checkbox';
 import { useHistory } from "react-router-dom";
 import StarIcon from '@mui/icons-material/Star';
-import { Calendar, momentLocalizer } from 'react-big-calendar'
-import moment from 'moment'
 
 
 function AllTasks() {
@@ -18,6 +16,7 @@ function AllTasks() {
   const tasks = useSelector(state => state.tasks.Tasks)
   const user = useSelector(state => state.session.user)
   const [checked, setChecked] = useState({});
+  // const [errors, setErrors] =useState({})
   const [deleteTimer, setDeleteTimer] = useState({});
 
   const history = useHistory()
@@ -34,9 +33,12 @@ function AllTasks() {
 
   const handleEditSubmit = async(e, task) => {
     e.preventDefault()
-    dispatch(updateTaskThunk(task, task.id))
+    try{
+      await dispatch(updateTaskThunk(task, task.id))
+    }catch(errors){
+      throw await errors
+    }
   }
-
 
   const handleChange = (event) => {
     const isChecked = event.target.checked;

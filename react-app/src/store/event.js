@@ -80,19 +80,28 @@ export const createEventThunk = event => async dispatch => {
 
 //EDIT EVENT
 export const updateEventThunk = (editedEvent, eventId) => async dispatch => {
+  console.log(editedEvent, 'EDITED EVENT')
+  const [date, time] = editedEvent.date.split(' ')
   const response = await fetch(`/api/events/${eventId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(editedEvent)
+    body: JSON.stringify({
+      name: editedEvent.name,
+      date: editedEvent.date,
+      time: editedEvent.time,
+      address: editedEvent.address,
+      city:editedEvent.city,
+      state: editedEvent.state,
+      country: editedEvent.country,
+      zip_code: editedEvent.zipCode,
+    })
   })
-
   if(response.ok){
     const data = await response.json()
     dispatch(updateEvent(data))
     return data
   }else {
-    const errors = await response.json()
-    return errors
+    throw await response.json()
   }
 }
 
