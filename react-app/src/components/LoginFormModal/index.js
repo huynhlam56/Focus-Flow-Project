@@ -24,7 +24,7 @@ function LoginFormModal() {
       setErrors(data);
     } else {
       closeModal()
-      history.push('/tasks')
+      history.push('/events')
       document.getElementById("bg").style.display = "none";
     }
   };
@@ -33,7 +33,7 @@ function LoginFormModal() {
     setErrors([])
     await dispatch(login('demouser@appacademy.io', 'password'))
     document.getElementById("bg").style.display = "none";
-    history.push('/tasks')
+    history.push('/events')
     closeModal()
   }
 
@@ -51,7 +51,7 @@ function LoginFormModal() {
       </form>
       {/* <button className="demo-submit-button" onClick={handleDemoUserLogin}>Log In As DemoUser</button> */}
       <div className="demo-user-div">
-        <Button style={{color: 'hsl(0deg 100% 98.91%)', width: '225px', border: '1px solid rgb(244 237 237)', backgroundColor:'rgb(144 65 0 / 92%)'}} type="submit" variant="outlined" onClick={handleDemoUserLogin}>Log In As Demo User</Button>
+        <Button id='log-in-demo' style={{color: 'hsl(0deg 100% 98.91%)', width: '225px', border: '1px solid rgb(244 237 237)', backgroundColor:'rgb(144 65 0 / 92%)'}} type="submit" variant="outlined" onClick={handleDemoUserLogin}>Log In As Demo User</Button>
       </div>
       <div className="no-acc-div">
         <p className="no-acc">Don't have an account?</p>

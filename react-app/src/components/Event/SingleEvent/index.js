@@ -12,13 +12,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DeleteEventModal from "../DeleteEvent"
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { IconButton } from "@mui/material";
-
+import { TimeField } from '@mui/x-date-pickers/TimeField';
 
 function SingleEvent({event, onEditCreateSubmit}) {
   const [isEditing, setIsEditing] = useState(false)
   const [name, setName] = useState(event.title)
   const [date, setDate] = useState(event.date)
-  console.log(typeof date, 'DATEEEE')
   const [time, setTime] = useState(event.time)
   const [address, setAddress] = useState(event.address)
   const [city, setCity] = useState(event.city)
@@ -60,6 +59,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
         country,
         zipCode
       }
+      console.log(typeof date, typeof time, 'DATETIMEEEEE')
       await onEditCreateSubmit(e, editedEvent)
       e.preventDefault()
       setIsEditing(false)
@@ -90,21 +90,29 @@ function SingleEvent({event, onEditCreateSubmit}) {
       {isEditing ? (
         <form className='event-form' onSubmit={handleSubmitButton}>
           <TextField style={{paddingTop:'15px'}} id="standard-basic" error={errors.name} helperText={errors.name} label="Event:" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-          <TextField id="labels" error={errors.address} helperText={errors.address} label="Address" variant="standard" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-          <TextField id="labels" error={errors.city} helperText={errors.city} label="City" variant="standard" type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-          <TextField id="labels" inputProps={{ maxLength: 2 }} error={errors.state} helperText={errors.state} label="State" variant="standard" type="text" value={state} onChange={(e) => setState(e.target.value)} />
-          <TextField id="labels" inputProps={{ maxLength: 2 }} error={errors.country} helperText={errors.components} label="Country" variant="standard" type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
-          <TextField id="labels" inputProps={{ maxLength: 5}} error={errors.zip_code} helperText={errors.zip_code} label="ZipCode" variant="standard" type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
-          {/* <LocalizationProvider  dateAdapter={AdapterDayjs}>
+          <TextField id="labels" placeholder='OPTIONAL' error={errors.address} helperText={errors.address} label="Address" variant="standard" type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+          <TextField id="labels" placeholder='OPTIONAL' error={errors.city} helperText={errors.city} label="City" variant="standard" type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+          <TextField id="labels" placeholder='OPTIONAL' inputProps={{ maxLength: 2 }} error={errors.state} helperText={errors.state} label="State" variant="standard" type="text" value={state} onChange={(e) => setState(e.target.value)} />
+          <TextField id="labels" placeholder='OPTIONAL' inputProps={{ maxLength: 2 }} error={errors.country} helperText={errors.components} label="Country" variant="standard" type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
+          <TextField id="labels" placeholder='OPTIONAL' inputProps={{ maxLength: 5}} error={errors.zip_code} helperText={errors.zip_code} label="ZipCode" variant="standard" type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={['DatePicker']}>
               <DatePicker
-                value={date.format('YYYY-MM-DD')}
-                onChange={e => setDate(dayjs(e))}
-                label={date.format('MM-DD-YYYY')}
-                onError={errors.date}
+                label= 'Date'
+                value={dayjs(date)}
+                onChange={dayjsObj => setDate(dayjsObj?.format('MM-DD-YYYY'))}
               />
             </DemoContainer>
-          </LocalizationProvider> */}
+          </LocalizationProvider>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={['TimeField']}>
+              <TimeField
+                label='Time'
+                value={dayjs(time, 'hh:mm A')}
+                onChange={e => setTime(e?.format('hh:mm A'))}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
           <div className="add-cancel-btn-container">
             <button className='save-cancel-task-btn' type='submit' onSubmit={handleSubmitButton}>Save</button>
             <button className='save-cancel-task-btn' type='button' onClick={handleCancelEditButton}>Cancel</button>
@@ -113,7 +121,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
       ) : (
       <div>
         <div className="single-event-container">
-          <h3 className="event-title">{event.title}</h3>
+          <h3 className="event-title">{name}</h3>
           <p className="event-fields"><b className="fields-label">Date:</b> {date}</p>
           <p className="event-fields"><b className="fields-label">Time:</b>{time}</p>
           <p className="event-fields"><b className="fields-label">Address:</b> {address} {city}, {state} {zipCode} </p>

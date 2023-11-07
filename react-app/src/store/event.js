@@ -62,7 +62,7 @@ export const fetchSingleEventThunk = (eventId) => async dispatch => {
 }
 
 // CREATE EVENT
-export const createEventThunk = event => async dispatch => {
+export const createEventThunk = (event) => async dispatch => {
   const response = await fetch('/api/events/new', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -74,14 +74,13 @@ export const createEventThunk = event => async dispatch => {
     dispatch(createEvent(newEvent))
     return newEvent
   }else {
+    console.log('not ok')
     throw await response.json()
   }
 }
 
 //EDIT EVENT
 export const updateEventThunk = (editedEvent, eventId) => async dispatch => {
-  console.log(editedEvent, 'EDITED EVENT')
-  const [date, time] = editedEvent.date.split(' ')
   const response = await fetch(`/api/events/${eventId}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -132,10 +131,11 @@ const eventReducer = (state = initialState, action) => {
       const updatedEvent = action.payload.event
       newState = {...state, Events: {...state.Events, [updatedEvent.id]: {...updatedEvent}}}
       return newState
-    case CREATE_EVENT:
-      const newEvent = action.payload.event
-      newState = {...state, Events: {...state.Events, [newEvent.id]: {...newEvent}}}
-      return newState
+    // case CREATE_EVENT:
+    //   const newEvent = action.payload.event
+    //   console.log(newEvent, 'NEW EVENTTT ')
+    //   newState = {...state, Events: {...state.Events, [newEvent.id]: {...newEvent}}}
+    //   return newState
     case DELETE_EVENT:
       newState = {...state}
       delete newState[action.eventId]

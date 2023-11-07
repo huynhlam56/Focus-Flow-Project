@@ -1,0 +1,19 @@
+.create-event-btn{
+  border: 1px solid #2f2f2f;
+  background-color: #e6ac72;
+  border-radius: 15px;
+  width: 150px;
+  padding: 10px 10px;
+  color: #3e3e3e;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.create-event-btn:hover{
+  background-color: #c88c50;
+}
+
+.rbc-event-content:hover{
+background-color: #7c490f;
+}
