@@ -134,10 +134,7 @@ function CreateTask() {
         <div className="add-btn">
           <button className='add-task-btn' onSubmit={handleSubmit} type="submit">Add</button>
         </div>
-       </form>
-       {/* <div>
-        {}
-       </div> */}
+      </form>
     </div>
   )
 }

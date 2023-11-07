@@ -6,6 +6,10 @@
   margin: 0px 10px;
 }
 
+#log-in-demo:hover{
+background-color: rgb(255, 255, 255);
+}
+
 .login-modal-div{
   align-items: center;
   background-color: #f1eeeb;

@@ -102,8 +102,7 @@ export const updateTaskThunk = (editedTask, taskId) => async dispatch => {
     dispatch(updateTask(data))
     return data
   } else {
-    const errors = await response.json()
-    return errors
+    throw await response.json()
   }
 }
 

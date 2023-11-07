@@ -21,7 +21,13 @@ class Event(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
   updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now())
 
+
+
   def to_dict(self):
+    event_date = datetime.strptime(self.date, "%m-%d-%Y")
+    event_time = datetime.strptime(self.time, "%I:%M %p")
+    formatted_date = event_date.strftime("%m-%d-%Y")
+    formatted_time = event_time.strftime("%I:%M %p")
     return {
       "id": self.id,
       "userId": self.user_id,
@@ -31,8 +37,8 @@ class Event(db.Model):
       "state": self.state,
       "country": self.country,
       "zipCode": self.zip_code,
-      "time": self.time,
-      "date": self.date,
+      "time": formatted_time,
+      "date": formatted_date,
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }

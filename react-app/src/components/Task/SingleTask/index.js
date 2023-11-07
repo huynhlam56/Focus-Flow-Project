@@ -48,26 +48,29 @@ function SingleTask({task, onEditCreateSubmit}) {
 
   const handleSubmitButton = async(e) => {
     e.preventDefault()
-
-    const editedTask = {
-      id: task.id,
-      name,
-      priority,
-      status,
-      deadline: deadline + ' ' + timePeriod,
-      category
+    try{
+      const editedTask = {
+        id: task.id,
+        name,
+        priority,
+        status,
+        deadline: deadline + ' ' + timePeriod,
+        category
+      }
+      await onEditCreateSubmit(e, editedTask)
+      e.preventDefault()
+      setIsEditing(false)
+      setErrors({})
+      setName(editedTask.name)
+      setPriority(editedTask.priority)
+      setStatus(editedTask.status)
+      setDeadline(editedTask.deadline.split(' ')[0])
+      setTimePeriod(editedTask.deadline.split(' ')[1])
+      setCategory(editedTask.category)
+    }catch(errors) {
+      setErrors(errors.errors)
+      return
     }
-    await onEditCreateSubmit(e, editedTask)
-    e.preventDefault()
-    setIsEditing(false)
-    setErrors({})
-    setName(editedTask.name)
-    setPriority(editedTask.priority)
-    setStatus(editedTask.status)
-    setDeadline(editedTask.deadline.split(' ')[0])
-    setTimePeriod(editedTask.deadline.split(' ')[1])
-    setCategory(editedTask.category)
-
     closeModal()
   }
 
@@ -77,7 +80,7 @@ function SingleTask({task, onEditCreateSubmit}) {
     <div className="task-form-container">
       {isEditing ? (
         <form className='task-form' onSubmit={handleSubmitButton}>
-          <TextField id="standard-basic" error={errors.name} helperText={errors.name} label="Task" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <TextField style={{paddingTop: '15px'}} id="standard-basic" error={errors.name} helperText={errors.name} label="Task:" variant="standard" type="text" value={name} onChange={(e) => setName(e.target.value)} />
           <RadioGroup
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
