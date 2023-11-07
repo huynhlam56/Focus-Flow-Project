@@ -1,10 +1,11 @@
 .create-event-container{
   display: flex;
   flex-direction: column;
-  margin: 0px 15px 15px;
+  margin: 10px 15px 15px;
   align-content: stretch;
   justify-content: space-evenly;
   align-items: flex-start;
+  border: 2px solid rgb(131 63 4);
 }
 
 .event-form{
@@ -16,7 +17,7 @@
 }
 
 #standard-basic{
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .add-event-btn{

@@ -6,6 +6,8 @@
   gap: 10px;
   padding: 10px;
   justify-content: space-around;
+  margin: 10px;
+  border: 2px solid rgb(131 63 4) ;
 }
 
 .event-form{
@@ -28,6 +30,7 @@
 #standard-basic-label{
   font-size: 30px;
 }
+
 
 #labels-label{
   font-size: 23px;
