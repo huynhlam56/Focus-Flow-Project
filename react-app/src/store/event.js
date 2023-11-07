@@ -66,9 +66,19 @@ export const createEventThunk = (event) => async dispatch => {
   const response = await fetch('/api/events/new', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(event)
+    body: JSON.stringify({
+      name: event.name,
+      date: event.date,
+      time: event.time,
+      address: event.address,
+      city:event.city,
+      state: event.state,
+      country: event.country,
+      zip_code: event.zipCode
+    })
   })
-
+  console.log(response, 'CREATE EVENT RES')
+  console.log(event, 'EVENT IN PAYLOAD ')
   if(response.ok){
     const newEvent = await response.json()
     dispatch(createEvent(newEvent))

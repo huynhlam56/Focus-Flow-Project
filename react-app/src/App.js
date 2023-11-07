@@ -20,8 +20,8 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          {/* <Route path='/'>
-            <LandingPage />
+          {/* <Route path=''>
+            <AllEvents />
           </Route> */}
           <Route path="/login" >
             <LoginFormPage />
@@ -34,6 +34,9 @@ function App() {
           </Route>
           <Route path="/events" >
             <AllEvents />
+          </Route>
+          <Route>
+            <h1>Page Not Found</h1>
           </Route>
         </Switch>
       )}
