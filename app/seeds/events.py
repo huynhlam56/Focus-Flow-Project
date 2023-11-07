@@ -14,7 +14,7 @@ def seed_events():
       name='Company conference',
       address='123 Maple St',
       city=fake.city(),
-      state=fake.state(),
+      state="MI",
       country='US',
       zip_code=fake.zipcode(),
       time='10:30 AM',
