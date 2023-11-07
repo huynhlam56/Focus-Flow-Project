@@ -77,8 +77,6 @@ export const createEventThunk = (event) => async dispatch => {
       zip_code: event.zipCode
     })
   })
-  console.log(response, 'CREATE EVENT RES')
-  console.log(event, 'EVENT IN PAYLOAD ')
   if(response.ok){
     const newEvent = await response.json()
     dispatch(createEvent(newEvent))
