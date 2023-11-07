@@ -204,6 +204,8 @@ function Navigation({ isLoaded }){
 				setButtonText('View Tasks');
 			} else if (currentPage === '/tasks') {
 				setButtonText('View Events');
+			}else{
+				setButtonText("View Events")
 			}
 		},[location.pathname])
 

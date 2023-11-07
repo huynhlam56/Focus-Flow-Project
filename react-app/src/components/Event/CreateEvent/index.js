@@ -62,13 +62,14 @@ function CreateEvent() {
         <TextField id="labels" placeholder='OPTIONAL' inputProps={{ maxLength: 2 }} error={errors.country} helperText={errors.components} label="Country" variant="standard" type="text" value={country} onChange={(e) => setCountry(e.target.value)} />
         <TextField id="labels" placeholder='OPTIONAL' inputProps={{ maxLength: 5}} error={errors.zip_code} helperText={errors.zip_code} label="ZipCode" variant="standard" type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DatePicker']}>
+            <DemoContainer  components={['DatePicker']}>
               <DatePicker
                 label="Date"
                 value={dayjs(date)}
                 onChange={dayjsObj => setDate(dayjsObj?.format('MM-DD-YYYY'))}
               />
             </DemoContainer>
+            {errors.date && <p id='error-msg'>{errors.date}</p>}
           </LocalizationProvider>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={['TimeField']}>
@@ -79,6 +80,7 @@ function CreateEvent() {
                 />
               </DemoContainer>
             </LocalizationProvider>
+            {errors.time && <p id='error-msg'>{errors.time}</p>}
         <div className="add-cancel-btn-container">
           <button className='add-event-btn' onSubmit={handleSubmit} type="submit">Add</button>
         </div>

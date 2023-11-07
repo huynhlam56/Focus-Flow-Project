@@ -90,6 +90,7 @@ function AllEvents() {
           showMultiDayTimes
           style={{ height: 600 }}
           onSelectEvent={handleSelectEvent}
+          popup={true}
         />
       </div>
     </Fragment>

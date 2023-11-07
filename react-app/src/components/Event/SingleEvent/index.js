@@ -104,6 +104,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
               />
             </DemoContainer>
           </LocalizationProvider>
+          {errors.date && <p id='error-msg'>{errors.date}</p>}
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={['TimeField']}>
               <TimeField
@@ -113,6 +114,7 @@ function SingleEvent({event, onEditCreateSubmit}) {
               />
             </DemoContainer>
           </LocalizationProvider>
+          {errors.time && <p id='error-msg'>{errors.time}</p>}
           <div className="add-cancel-btn-container">
             <button className='save-cancel-task-btn' type='submit' onSubmit={handleSubmitButton}>Save</button>
             <button className='save-cancel-task-btn' type='button' onClick={handleCancelEditButton}>Cancel</button>
@@ -124,7 +126,10 @@ function SingleEvent({event, onEditCreateSubmit}) {
           <h3 className="event-title">{name}</h3>
           <p className="event-fields"><b className="fields-label">Date:</b> {date}</p>
           <p className="event-fields"><b className="fields-label">Time:</b>{time}</p>
-          <p className="event-fields"><b className="fields-label">Address:</b> {address} {city}, {state} {zipCode} </p>
+          {(address, city, state, country, zipCode) ?
+            <p className="event-fields"><b className="fields-label">Address:</b> {address} {city}, {state} {zipCode} </p>
+            : <p className="event-fields"><b className="fields-label">Address:</b> None Provided</p>
+          }
         </div>
         <div className="edit-delete-btns">
         <IconButton style={{fontSize: '20px', color: 'gray', display:'flex', flexDirection:'row', alignItems: 'baseline'}}  onClick={handleEditButton} color="primary" aria-label="edit">
