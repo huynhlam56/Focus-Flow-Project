@@ -218,7 +218,7 @@ function Navigation({ isLoaded }){
 		if (!sessionUser) {
 			return (
 				<div className='landing-page'>
-					<div className='empty-div'></div>
+					{/* <div className='empty-div'></div> */}
 					<ul className='header-nouser'>
 						<h1 className='title-section'>
 							<NavLink className='title' exact to="/">Focus Flow</NavLink>
@@ -252,7 +252,7 @@ function Navigation({ isLoaded }){
 			)
 		}else {
 				return (
-					<div>
+					<div className='content'>
 						<ul className='page-header'>
 							<h1 className='title-section'>
 								<h1 className='title-task-index'>Focus Flow</h1>

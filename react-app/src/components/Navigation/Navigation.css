@@ -2,6 +2,10 @@
   height: 100vh;
 }
 
+.content{
+  height: 40vh;
+}
+
 .profile-dropdown {
   position: absolute;
 }
