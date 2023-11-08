@@ -36,10 +36,8 @@ export const deleteEvent = (eventId) => ({
 // GET EVENTS
 export const fetchAllEventsThunk = () => async dispatch => {
   const response = await fetch('/api/events/')
-  console.log(response, 'RESPONSE FROM BACKEND ')
   if (response.ok) {
     const data = await response.json()
-    console.log(data, 'DATA BACK')
     dispatch(loadEvents(data))
     return data
   }else {
@@ -82,7 +80,6 @@ export const createEventThunk = (event) => async dispatch => {
     dispatch(createEvent(newEvent))
     return newEvent
   }else {
-    console.log('not ok')
     throw await response.json()
   }
 }
@@ -139,11 +136,6 @@ const eventReducer = (state = initialState, action) => {
       const updatedEvent = action.payload.event
       newState = {...state, Events: {...state.Events, [updatedEvent.id]: {...updatedEvent}}}
       return newState
-    // case CREATE_EVENT:
-    //   const newEvent = action.payload.event
-    //   console.log(newEvent, 'NEW EVENTTT ')
-    //   newState = {...state, Events: {...state.Events, [newEvent.id]: {...newEvent}}}
-    //   return newState
     case DELETE_EVENT:
       newState = {...state}
       delete newState[action.eventId]

@@ -8,11 +8,12 @@ import logo from '../images/logo.png'
 import OpenModalButton from '../OpenModalButton';
 import SignupFormModal from '../SignupFormModal';
 import { useHistory, useLocation } from 'react-router-dom';
+import AllEvents from '../Event/EventIndex';
+import AllTasks from '../Task/TaskIndex';
 
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
-	// if (sessionUser) return <Redirect to="/" />;
 	const history = useHistory()
 	const location = useLocation()
 	const [buttonText, setButtonText] = useState('');
@@ -43,10 +44,6 @@ function Navigation({ isLoaded }){
 
 		var	$body = document.querySelector('body');
 
-	// Methods/polyfills.
-
-	// classList | (c) @remy | github.com/remy/polyfills | rem.mit-license.org
-	// !function(){function t(t){this.el=t;for(var n=t.className.replace(/^\s+|\s+$/g,"").split(/\s+/),i=0;i<n.length;i++)e.call(this,n[i])}function n(t,n,i){Object.defineProperty?Object.defineProperty(t,n,{get:i}):t.__defineGetter__(n,i)}if(!("undefined"==typeof window.Element||"classList"in document.documentElement)){var i=Array.prototype,e=i.push,s=i.splice,o=i.join;t.prototype={add:function(t){this.contains(t)||(e.call(this,t),this.el.className=this.toString())},contains:function(t){return-1!=this.el.className.indexOf(t)},item:function(t){return this[t]||null},remove:function(t){if(this.contains(t)){for(var n=0;n<this.length&&this[n]!=t;n++);s.call(this,n,1),this.el.className=this.toString()}},toString:function(){return o.call(this," ")},toggle:function(t){return this.contains(t)?this.remove(t):this.add(t),this.contains(t)}},window.DOMTokenList=t,n(Element.prototype,"classList",function(){return new t(this)})}}();
 	function customClassList(el) {
 		this.el = el;
 		const classes = el.className.replace(/^\s+|\s+$/g, "").split(/\s+/);
@@ -218,59 +215,64 @@ function Navigation({ isLoaded }){
 			}
 		}
 
-		if (!sessionUser) return (
-		<div className='landing-page'>
-			<div className='empty-div'></div>
-			<ul className='header-nouser'>
-				<h1 className='title-section'>
-					<NavLink className='title' exact to="/">Focus Flow</NavLink>
-					{/* <img className='logo' src={logo}></img> */}
-				</h1>
-			<div>
-				<h2 className='inner-text-header'>Get a clear overview of everything on your plate and never lose track of an important task.</h2>
-			</div>
-				<li className='signup-login-btns'>
-					{/* <ProfileButton user={sessionUser} /> */}
-					{/* <TextField size="small" id="outlined-basic" helperText={errors.email} error ={ errors.email } label="Email" variant="outlined" type="text" value={email} onClick={handleSubmit}  /> */}
-					<OpenModalButton
-						buttonText='Log In'
-						modalComponent={<LoginFormModal />}
-						styleClass='Sign-up-btn'
-					/>
-					<OpenModalButton
-						buttonText='Start For Free'
-						modalComponent={<SignupFormModal />}
-						styleClass='Sign-up-btn'
-					/>
-				</li>
-			</ul>
-			<div className='text1'>
-				<div className='center-text'>
-					<span className='quote'>"The key to happiness is really progress and growth and constantly working on yourself and developing something..." -Lewis Howes</span>
-					{/* <span className='author'> -Lewis Howes</span> */}
+		if (!sessionUser) {
+			return (
+				<div className='landing-page'>
+					<div className='empty-div'></div>
+					<ul className='header-nouser'>
+						<h1 className='title-section'>
+							<NavLink className='title' exact to="/">Focus Flow</NavLink>
+							{/* <img className='logo' src={logo}></img> */}
+						</h1>
+					<div>
+						<h2 className='inner-text-header'>Get a clear overview of everything on your plate and never lose track of an important task.</h2>
+					</div>
+						<li className='signup-login-btns'>
+							{/* <ProfileButton user={sessionUser} /> */}
+							{/* <TextField size="small" id="outlined-basic" helperText={errors.email} error ={ errors.email } label="Email" variant="outlined" type="text" value={email} onClick={handleSubmit}  /> */}
+							<OpenModalButton
+								buttonText='Log In'
+								modalComponent={<LoginFormModal />}
+								styleClass='Sign-up-btn'
+							/>
+							<OpenModalButton
+								buttonText='Start For Free'
+								modalComponent={<SignupFormModal />}
+								styleClass='Sign-up-btn'
+							/>
+						</li>
+					</ul>
+					<div className='text1'>
+						<div className='center-text'>
+							<span className='quote'>"The key to happiness is really progress and growth and constantly working on yourself and developing something..." -Lewis Howes</span>
+							{/* <span className='author'> -Lewis Howes</span> */}
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	)
-
-	return (
-		<ul className='page-header'>
-			<h1 className='title-section'>
-				<h1 className='title-task-index'>Focus Flow</h1>
-				<img className='logo' src={logo}></img>
-			</h1>
-			<div className='tasks-profile-btn'>
-				<p>
-					<button className='tasks-link' onClick={handleViewTasks}>{buttonText}</button>
-				</p>
-				{isLoaded && (
-					<li>
-						<ProfileButton user={sessionUser} />
-					</li>
-				)}
-			</div>
-		</ul>
-	);
+			)
+		}else {
+				return (
+					<div>
+						<ul className='page-header'>
+							<h1 className='title-section'>
+								<h1 className='title-task-index'>Focus Flow</h1>
+								<img className='logo' src={logo}></img>
+							</h1>
+							<div className='tasks-profile-btn'>
+								<p>
+									<button className='tasks-link' onClick={handleViewTasks}>{buttonText}</button>
+								</p>
+								{isLoaded && (
+									<li>
+										<ProfileButton user={sessionUser} />
+									</li>
+								)}
+							</div>
+						</ul>
+						{buttonText === 'View Tasks' ? <AllEvents /> : <AllTasks />}
+				</div>
+			);
+		}
 }
 
 export default Navigation;

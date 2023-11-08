@@ -119,9 +119,6 @@ export const createTaskThunk =(task) => async dispatch => {
     dispatch(createTask(newTask))
     return newTask
   }else {
-    // const errors = await response.json()
-    // console.log('NOT OK', errors)
-    // throw new Error(errors)
     throw await response.json()
   }
 }

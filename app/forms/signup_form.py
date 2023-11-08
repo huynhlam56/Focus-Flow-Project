@@ -22,7 +22,6 @@ def username_exists(form, field):
 def valid_name(form, field):
     name = field.data
     if len(name) < 2:
-        print('NAME', name)
         raise ValidationError('Please enter a valid name')
 
 class SignUpForm(FlaskForm):
