@@ -36,7 +36,6 @@ def get_event_detail(eventId):
   """
 
   event = Event.query.get(eventId)
-  print(event.user_id, 'eventttttttt')
   if(event.user_id != current_user.id):
     return {'error': 'Unauthorized'}, 401
 

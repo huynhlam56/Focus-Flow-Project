@@ -42,11 +42,9 @@ function CreateEvent() {
       const newEvent = await dispatch(createEventThunk(event))
       newEvent.id = event.id
       if(newEvent) {
-        console.log(newEvent,' NEWEVENT')
         dispatch(fetchAllEventsThunk(newEvent.id))
       }
     }catch(errors) {
-      console.log(errors, 'ERRORS')
       setErrors(errors.errors)
       return
     }

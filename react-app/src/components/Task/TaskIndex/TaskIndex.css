@@ -84,7 +84,7 @@
 
 .title-task-index{
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   color: #654a4e;
   font-weight: bolder;
   letter-spacing: 10px;

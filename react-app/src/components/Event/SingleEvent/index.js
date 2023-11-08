@@ -59,7 +59,6 @@ function SingleEvent({event, onEditCreateSubmit}) {
         country,
         zipCode
       }
-      console.log(typeof date, typeof time, 'DATETIMEEEEE')
       await onEditCreateSubmit(e, editedEvent)
       e.preventDefault()
       setIsEditing(false)
@@ -72,7 +71,6 @@ function SingleEvent({event, onEditCreateSubmit}) {
       setState(editedEvent.state)
       setCountry(editedEvent.country)
       setZipCode(editedEvent.zipCode)
-      console.log(zipCode, 'INSIDE OF HANDLE')
         // closeModal()
       }catch(errors) {
         setErrors(errors.errors)
@@ -80,7 +78,6 @@ function SingleEvent({event, onEditCreateSubmit}) {
       }
     // closeModal()
   }
-  console.log(zipCode, 'OUTSIDE OF HANDLE')
 
 
   if(!event || Object.keys(event) === 0) return null

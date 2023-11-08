@@ -6,7 +6,6 @@ from wtforms.validators import DataRequired, ValidationError, Length, NumberRang
 def validate_zip_code(form, field):
 
   if not (field.data is None or field.data.isdigit() or len(field.data) != 5):
-    print(type(field.data))
     raise ValidationError('ZIP code must be 5 digits')
 
 def validate_country_state(form, field):
@@ -14,7 +13,7 @@ def validate_country_state(form, field):
     raise ValidationError("Please enter abbreviated name(e.g. 'CA', 'US')")
 
 class EventForm(FlaskForm):
-  name = StringField('name', validators=[DataRequired()])
+  name = StringField('name', validators=[DataRequired(), Length(max=50)])
   address = StringField('address')
   city = StringField('city')
   state = StringField('state', validators=[validate_country_state])

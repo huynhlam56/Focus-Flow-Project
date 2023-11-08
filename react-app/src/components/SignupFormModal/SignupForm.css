@@ -3,7 +3,9 @@
   background-color: #f1eeeb;
   border-radius: 10px;
   width: 300px;
-  border: 2px solid rgb(131 63 4);
+  border: 2px solid rgb(161, 101, 56);
+  margin: 10px;
+  border-radius: 5px;
   padding: 20px;
   display: flex;
   flex-direction: column;

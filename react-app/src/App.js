@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllTasks from "./components/Task/TaskIndex"
 import AllEvents from "./components/Event/EventIndex"
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,13 +17,13 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="page-container">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          {/* <Route path=''>
-            <AllEvents />
-          </Route> */}
+          <Route path=''>
+            {/* <AllEvents /> */}
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -40,7 +41,8 @@ function App() {
           </Route>
         </Switch>
       )}
-    </>
+      <Footer isLoaded={isLoaded} />
+    </div>
   );
 }
 

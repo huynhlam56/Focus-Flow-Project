@@ -20,7 +20,7 @@
 
 .title {
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
   color: #f9f9f9;
   font-weight: bolder;
   letter-spacing: 10px;
