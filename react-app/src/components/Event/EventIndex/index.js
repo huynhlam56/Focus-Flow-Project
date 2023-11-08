@@ -72,28 +72,30 @@ function AllEvents() {
   const localizer = momentLocalizer(moment)
 
   return (
-    <Fragment>
-      <div className="add-event-btn-container">
-        <OpenModalButton
-        buttonText='Add Event'
-        modalComponent={<CreateEvent />}
-        styleClass='create-event-btn'
-        />
-      </div>
-      <div>
-        <Calendar
-          localizer={localizer}
-          defaultDate={defaultDate}
-          events={eventData}
-          step={60}
-          views={views}
-          showMultiDayTimes
-          style={{ height: 600 }}
-          onSelectEvent={handleSelectEvent}
-          popup={true}
-        />
-      </div>
-    </Fragment>
+    <div style={{height:'30vh'}} >
+      <Fragment>
+        <div className="add-event-btn-container">
+          <OpenModalButton
+          buttonText='Add Event'
+          modalComponent={<CreateEvent />}
+          styleClass='create-event-btn'
+          />
+        </div>
+        <div style={{paddingTop:'50px'}}>
+          <Calendar
+            localizer={localizer}
+            defaultDate={defaultDate}
+            events={eventData}
+            step={60}
+            views={views}
+            showMultiDayTimes
+            style={{ height: 600 }}
+            onSelectEvent={handleSelectEvent}
+            popup={true}
+          />
+        </div>
+      </Fragment>
+    </div>
   )
 }
 
