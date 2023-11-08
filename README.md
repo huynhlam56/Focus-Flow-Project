@@ -1,7 +1,7 @@
 ## Summary:
 Focus Flow is a web application that allows users to effortlessly keep track of their daily responsibilities and mark down future events on the calendar.
 Users are able to see all their tasks for the day, as well as create, edit, and complete tasks. Along with each task, users have the option to add any additional
-notes that they have for that task. In addition, users can also use the calendar to mark down important events so they don't forget! The goal of Focus Flow is to help users stay focused and organized becase we all know that life can get very chaotic!
+notes that they have for that task. In addition, users can also use the calendar to mark down important events so they don't forget! The goal of Focus Flow is to help users stay focused and organized because we all know that life can get very chaotic!
 
 https://focus-flow-urhu.onrender.com
 
