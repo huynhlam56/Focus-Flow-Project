@@ -18,10 +18,11 @@
 #footer-div {
   padding: 10px;
   background-color: transparent;
-  margin-top: 50vh;
+  margin-top: 100vh;
   border-top: 1px solid black;
-  /* mix-blend-mode: plus-lighter; */
   background-color: #f3b792;
+  /* bottom: 0; */
+  width: 100%;
 }
 
 #about-p {

@@ -28,3 +28,13 @@ body{
 select{
   height: 30px;
 }
+
+#content-wrap {
+  flex: 1;
+}
+
+.page-container{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

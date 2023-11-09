@@ -18,6 +18,7 @@ function App() {
 
   return (
     <div className="page-container">
+      <div id='content-wrap'>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -41,6 +42,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      </div>
       <Footer isLoaded={isLoaded} />
     </div>
   );
