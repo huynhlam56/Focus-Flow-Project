@@ -72,7 +72,7 @@ function AllEvents() {
   const localizer = momentLocalizer(moment)
 
   return (
-    <div style={{height:'30vh'}} >
+    <div style={{height:'100vh'}} >
       <Fragment>
         <div className="add-event-btn-container">
           <OpenModalButton

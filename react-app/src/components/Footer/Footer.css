@@ -18,7 +18,7 @@
 #footer-div {
   padding: 10px;
   background-color: transparent;
-  margin-top: 100vh;
+  /* margin-top: 100vh; */
   border-top: 1px solid black;
   background-color: #f3b792;
   /* bottom: 0; */
