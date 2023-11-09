@@ -46,3 +46,12 @@ https://github.com/huynhlam56/Focus-Flow-Project/wiki/Backend-Routes
 
 ### User Stories:
 https://github.com/huynhlam56/Focus-Flow-Project/wiki/Users-Stories
+
+
+## Setup:
+# Build command:
+
+npm install --prefix react-app && npm run build --prefix react-app && pip install -r requirements.txt && pip install psycopg2 && pip install email_validator && flask db upgrade && flask seed all
+
+# Start command:
+gunicorn app:app
